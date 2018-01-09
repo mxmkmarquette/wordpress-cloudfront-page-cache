@@ -1,0 +1,1 @@
+<?php // CloudFront Page Cache
