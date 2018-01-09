@@ -13,4 +13,60 @@ Low cost and high performance page cache based on Amazon's CloudFront CDN that p
 
 == Description ==
 
-....
+This plugin provides a low cost and high performance international page cache solution based on [Amazon AWS CloudFront CDN](https://aws.amazon.com/cloudfront/).
+
+This is the first version of the plugin but the underlying technologies have been tested for over 5 years and some of our clients have achieved long term top 10 positions in Google in over 20 countries using a single server in Amsterdam.
+
+A big advantage of using CloudFront as a page cache for international SEO is that Amazon provides dedicated IP's for geographic regions. This means that a website will physically load from a location near the visitor. For a visitor from Sweden the website may be physically loaded from a server and IP in Stockholm.
+
+![CloudFront performance PageSpeed.pro](https://pagespeed.pro/wp-content/plugins/cloudfront-page-cache/admin/images/pagespeed-aws-cloudfront.png)
+
+An other advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs may litterally be a few dollars per month. Amazon provides free SSL certificates and there are no hidden costs.
+
+Amazon AWS CloudFront is among the [fastest](https://encrypted.google.com/search?q=cloudfront+vs) CDN providers available with the greatest global network. This makes it a perfect option for any website that wants to reach an international audience or that simply wants a fast and secure page cache for a low cost VPS.
+
+![CloudFront network 2017](https://pagespeed.pro/wp-content/plugins/cloudfront-page-cache/admin/images/aws-cloudfront-network-2017.png)
+
+This page cache solution makes it possible to use a 5 USD VPS for a heavy WordPress + WooCommerce installation while being capable of handling hundreds of visitors per day (with a fast page speed and good results in Google) for an additional 5 to 10 USD per month in AWS costs. An example is our demo website www.e-scooter.co which is hosted on a cheap VPS in Switzerland. The website was created in July 2017 and it already has #1 positions in Google for premium search terms in the U.S., India and other regions. The total bill for December 2017, including www.pagespeed.pro, www.fastestwebsite.co and some other websites, was $8.89 USD.
+
+We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback to [info@pagespeed.pro](mailto:info@pagespeed.pro).
+
+If you are happy with the plugin, please consider to [write a review](https://wordpress.org/support/plugin/cloudfront-page-cache/reviews/).
+
+== Installation ==
+
+### WordPress plugin installation
+
+1. Upload the `cloudfront-page-cache/` directory to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Navigate to the plugin setup page or follow the below instructions.
+
+### CloudFront Page Cache installation
+
+The setup of CloudFront, despite the many options, is very simple. The most important settings for this plugin to work are the correct configuration of the origin host, the CNAME (public host), creating a SSL certificate (optional) and setting the `X-CF-PAGE-CACHE` header. The other settings are mostly for optimization purposes and we will provide some advise for achieving the best settings for your website.
+
+To get started, login to [AWS CloudFront Console](https://console.aws.amazon.com/cloudfront/home), click the button **Create Distribution** and choose the *Web* Distribution type.
+
+1. Enter the origin host name in the **Origin Domain Name** field. By default, this plugin differentiates between origin and public hosts by the presence of `www.` so if your public host is *www.your-domain.com* then you would enter *yourdomain.com* as your origin host. If you want to use your root domain then the www. version will be your origin host. You can customize this behaviour in the plugin settings.</p>
+2. In the **Origin Custom Headers** field, add the header `X-CF-PAGE-CACHE` with the value `1`.
+3. In the **Alternate Domain Names (CNAMEs)** field, enter the public host (non-www. or www. version of the origin host).
+4. Set **Cache Based on Selected Request Headers** to `Whitelist` and add the HTTP headers `Host` and `Origin` to the list. This will prevent direct access to the CloudFront domain.
+
+The other settings are optional but we advise to install a SSL certificate, force SSL using *Viewer Policy: Redirect HTTP to HTTPS*, forward query strings using *Forward all, cache based on whitelist* (useful for debugging and cache busting) and *Compress Objects Automatically* (enabled). You should also look at the option *Origin Protocol Policy*. If your origin forces SSL then the setting should be *HTTPS only*.
+
+*Done**
+
+CloudFront will setup the distribution in a few minutes.
+
+== Screenshots ==
+
+1. CloudFront Page Cache
+2. CloudFront Page Cache Settings
+3. CloudFront Invalidation Form
+4. International CloudFront Performance
+5. CloudFront Network (2017)
+
+== Changelog ==
+
+= 1.0 =
+* The first version.
