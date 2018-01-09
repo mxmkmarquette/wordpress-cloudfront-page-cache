@@ -44,7 +44,7 @@ span.n {
 
 <h1>Plugin Setup</h1>
 
-<p>Enable the plugin by configuring the <a href="<?php print esc_url(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'settings' ), admin_url('admin.php'))); ?>">settings</a>.</p>
+<p>Enable the plugin by configuring the <a href="<?php print esc_url(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'settings' ), admin_url('options-general.php'))); ?>">settings</a>.</p>
 
 <h1>DNS Setup</h1>
 <p>To connect the CloudFront public cache frontend to your website, you will need to add a CNAME record in your DNS server for the public host that you configured as CNAME in the CloudFront distribution. The CNAME should point to the CloudFront Domain Name of your distribution. In our case it is <em>d1hyhu0m6pwrmw.cloudfront.net</em>.</p>
@@ -60,7 +60,7 @@ span.n {
 <p>If you are currently not using Route 53 and would like to use a root domain as the public host name then it is required to move your existing DNS to Route 53. To move the DNS, you can simply copy your existing DNS entries and enter the Route 53 nameservers at your domain registrar.</p>
 
 <h1>How to test if it is working?</h1>
-<p>CloudFront adds HTTP headers with the cache status. To test if the cache is working you can open the browser console (F12 in most browsers) and open the Network tab. The below example is from Firefox</p>
+<p>CloudFront adds HTTP headers with the cache status. To test if the cache is working you can open the browser console (F12 in most browsers) and open the Network tab.</p>
 <p><img src="<?php print plugins_url('admin/images/cf-http-headers-chrome.png', 'cloudfront-page-cache/cloudefront-page-cache.php'); ?>?x"></p>
 
 <h1>Webserver Setup</h1>

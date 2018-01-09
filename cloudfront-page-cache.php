@@ -9,7 +9,6 @@
  * @package           optimization
  *
  * @wordpress-plugin
- *
  * Plugin Name:       CloudFront Page Cache CDN
  * Description:       Low cost and high performance page cache based on Amazon's CloudFront CDN that provides international fast website speed and dedicated geographic IP's for local SEO advantage.
  * Version:           1.0.0

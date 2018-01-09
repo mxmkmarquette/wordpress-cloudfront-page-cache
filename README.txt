@@ -1,7 +1,7 @@
 === CloudFront Page Cache ===
 Contributors: optimalisatie
 Donate link: https://pagespeed.pro/
-Tags: cache, page cache, cloudfront, aws, amazon, cloud, seo, international, performance, speed, page speed, pagespeed
+Tags: cache, cloudfront, aws, amazon, page cache, site cache, cloud, seo, international, performance, speed, page speed, pagespeed, fpc, full page cache, html cache
 Requires at least: 3.0.1
 Tested up to: 4.9
 Requires PHP: 5.4

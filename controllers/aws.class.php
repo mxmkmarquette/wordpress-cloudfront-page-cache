@@ -67,19 +67,25 @@ class Aws extends Controller implements Controller_Interface
                 throw new Exception('Failed to load AWS API. AWS Access Credential <code>'.$key.'</code> missing.');
             }
         }
-
+ 
         // include AWS autoloader
         require_once CF_FPC_PATH . 'lib/aws-sdk/aws-autoloader.php';
 
         // load cloudfront
-        $this->cloudfront = new \Aws\CloudFront\CloudFrontClient(array(
-            'version' => 'latest',
-            'region' => $region,
-            'credentials' => array(
-                'key' => $access_key,
-                'secret' => $access_secret
-            )
-        ));
+        try {
+            $this->cloudfront = new \Aws\CloudFront\CloudFrontClient(array(
+                'version' => 'latest',
+                'region' => $region,
+                'credentials' => array(
+                    'key' => $access_key,
+                    'secret' => $access_secret
+                )
+            ));
+        } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
+            throw new Exception($e->getMessage());
+        } catch (\AwsException $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 
     /**
@@ -89,7 +95,11 @@ class Aws extends Controller implements Controller_Interface
     {
 
         // load API connection
-        $this->load_api($access_key, $access_secret, $region);
+        try {
+            $this->load_api($access_key, $access_secret, $region);
+        } catch (Exception $err) {
+            return false;
+        }
 
         if (!$distribution_id) {
             $distribution_id = $this->distribution_id;
@@ -103,8 +113,10 @@ class Aws extends Controller implements Controller_Interface
             $result = $this->cloudfront->listInvalidations(array(
                 'DistributionId' => $distribution_id
             ));
+        } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
+            throw new Exception($e->getMessage());
         } catch (\AwsException $e) {
-            throw Exception($e->getMessage());
+            throw new Exception($e->getMessage());
         }
 
         return ($result && $result->get('InvalidationList')) ? true : false;
@@ -126,8 +138,10 @@ class Aws extends Controller implements Controller_Interface
                 'DistributionId' => $this->distribution_id,
                 'Id' => $id
             ));
+        } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
+            throw new Exception('Failed to get CloudFront invalidation: '. $e->getMessage());
         } catch (\AwsException $e) {
-            throw Exception('Failed to get CloudFront invalidation: '. $e->getMessage());
+            throw new Exception('Failed to get CloudFront invalidation: '. $e->getMessage());
         }
 
         $invalidation = $invalidation_result->get('Invalidation');
@@ -176,8 +190,10 @@ class Aws extends Controller implements Controller_Interface
                     )
                 )
             ));
+        } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
+            throw new Exception('CloudFront invalidation failed: '. $e->getMessage());
         } catch (\AwsException $e) {
-            throw Exception('CloudFront invalidation failed: '. $e->getMessage());
+            throw new Exception('CloudFront invalidation failed: '. $e->getMessage());
         }
 
         $invalidation = $invalidation_result->get('Invalidation');

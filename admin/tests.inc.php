@@ -64,7 +64,7 @@ if (!$currenturl_host) {
 
 <h2 style="line-height:25px;">Google Page Speed test <a href="<?php print esc_url('https://developers.google.com/speed/pagespeed/insights/?url=' . urlencode($currenturl)); ?>" target="_blank" rel="noopener" class="button button-small">Start Test</a></h2>
 
-<h2 style="line-height:25px;">Google AI based Mobile Speed test <a href="<?php print esc_url($thinkurl); ?>" target="_blank" rel="noopener" class="button button-small">Start Test</a></h2>
+<h2 style="line-height:25px;">Google AI based mobile speed test <a href="<?php print esc_url($thinkurl); ?>" target="_blank" rel="noopener" class="button button-small">Start Test</a></h2>
 
 <h2 style="line-height:25px;">GTMetrix test <a href="<?php print esc_url('https://gtmetrix.com/?url='.urlencode($currenturl).'&utm_source=wordpress&utm_medium=plugin&utm_term=optimization&utm_campaign=CloudFront%20Page%20Cache'); ?>" target="_blank" rel="noopener" class="button button-small">Start Test</a></h2>
 

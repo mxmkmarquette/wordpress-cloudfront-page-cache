@@ -107,7 +107,7 @@ class AdminViewInvalidation extends AdminViewBase
             update_option('cf-page-cache-last-invalidation', $invalidations, false);
         }
 
-        wp_redirect(wp_nonce_url(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation' ), admin_url('options-general.php'))));
+        wp_redirect(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation' ), admin_url('options-general.php')));
         exit;
     }
 }
