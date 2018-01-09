@@ -47,8 +47,8 @@ if (version_compare(PHP_VERSION, '5.3', '<')) {
         // load CloudFront page cache controller
         CloudFrontPageCache\Core::load();
 
-        // catch CloudFrontPageCache errors
-    } catch (Exception $err) {
+        // catch plugin exceptions
+    } catch (CloudFrontPageCache\Exception $err) {
 
         // plugin failed to load
         if (is_admin()) {
