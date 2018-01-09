@@ -31,8 +31,6 @@ This page cache solution makes it possible to use a 5 USD VPS for a heavy WordPr
 
 We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback to [info@pagespeed.pro](mailto:info@pagespeed.pro).
 
-If you are happy with the plugin, please consider to [write a review](https://wordpress.org/support/plugin/cloudfront-page-cache/reviews/).
-
 == Installation ==
 
 ### WordPress plugin installation

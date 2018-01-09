@@ -4,8 +4,8 @@
 
 Low cost and high performance page cache based on Amazon's CloudFront CDN that provides international fast website speed and dedicated geographic IP's for local SEO advantage.
 
-* <a href="https://wordpress.org/support/plugin/cloudfront-page-cache/">Documentation</a>
-* <a href="https://wordpress.org/support/plugin/cloudfront-page-cache/">WordPress Profile</a>
+* <a href="https://wordpress.org/support/plugin/cf-page-cache/">Documentation</a>
+* <a href="https://wordpress.org/support/plugin/cf-page-cache/">WordPress Profile</a>
 
 ### Introduction
 
@@ -27,4 +27,4 @@ This page cache solution makes it possible to use a 5 USD VPS for a heavy WordPr
 
 We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback to [info@pagespeed.pro](mailto:info@pagespeed.pro).
 
-If you are happy with the plugin, please consider to [write a review](https://wordpress.org/support/plugin/cloudfront-page-cache/reviews/).
+If you are happy with the plugin, please consider to [write a review](https://wordpress.org/support/plugin/cf-page-cache/reviews/).
