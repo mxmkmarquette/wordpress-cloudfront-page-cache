@@ -72,14 +72,8 @@ if ($budget_stats['percentage'] >= 90) {
 			<p>An example is our demo website <a href="https://www.e-scooter.co/?utm_source=wordpress&amp;utm_medium=plugin&amp;utm_term=optimization&amp;utm_campaign=cloudfront-page-cache" target="_blank" rel="noopener">www.e-scooter.co</a> which is hosted on a cheap VPS in Switzerland. The website was created in July 2017 and it already has #1 positions in Google for premium search terms in the U.S., India and other regions. It receives hundreds of visitors per day who browse many pages. The total CloudFront bill for December 2017, including www.pagespeed.pro, www.fastestwebsite.co and some other websites was $0.74 USD.</p>
 
 			<p>We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback to <a href="mailto:info@pagespeed.pro">info@pagespeed.pro</a></p>
-			<p>If you are happy with the plugin, please consider to <a href="https://wordpress.org/support/plugin/cloudfront-page-cache/reviews/">write a review</a>.</p>
-
+			<p>If you are happy with the plugin, please consider to <a href="https://wordpress.org/support/plugin/cf-page-cache/reviews/" target="_blank" rel="noopener">write a review</a>.</p>
+			
 		</div>
 	</div>
-
-</div>
-<style>
-#wpfooter {
-	position:relative!important;
-}
-</style>
+	</div>

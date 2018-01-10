@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-    if (isset($_GET['view'])) {
+    if ($this->active_view !== 'intro') {
         ?>
 
 <!-- header -->
