@@ -24,6 +24,7 @@ class AdminCP extends Controller implements Controller_Interface
     {
         // instantiate controller
         return parent::construct($Core, array(
+            'admin',
             'error',
             'aws'
         ));
@@ -52,7 +53,7 @@ class AdminCP extends Controller implements Controller_Interface
     public function show_notices()
     {
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
 

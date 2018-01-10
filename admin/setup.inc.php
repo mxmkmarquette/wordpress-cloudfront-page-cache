@@ -74,7 +74,7 @@ RewriteEngine On
 
 <span style="color:#E48700;font-weight:bold;"># CloudFront origin pull detection</span>
 <span style="color:#1166BB;font-weight:bold;">RewriteCond %{HTTP:X-CF-PAGE-CACHE} !=1 [NC]
-RewriteCond %{REQUEST_URI} !^/wp-(admin|login) # enabe /wp-admin/ access on origin</span>
+RewriteCond %{REQUEST_URI} !^/wp-(admin|login) # enable /wp-admin/ access on origin</span>
 ...
 RewriteCond %{HTTP_HOST} !^www\.
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]

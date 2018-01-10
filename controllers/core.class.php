@@ -161,7 +161,7 @@ class Core
         }
 
         // allow extension with custom controllers
-        $custom_controllers = apply_filters('cloudfrontpagecache_controllers', false);
+        $custom_controllers = apply_filters('cf_page_cache_controllers', false);
         if (!empty($custom_controllers) && is_array($custom_controllers)) {
             $custom_controllers = array_map('strtolower', array_unique(array_values($custom_controllers)));
             if (!empty(array_intersect($controllers, $custom_controllers))) {
@@ -177,7 +177,7 @@ class Core
 
         // setup completed
         try {
-            do_action('cloudfrontpagecache_setup_completed');
+            do_action('cf_page_cache_setup_completed');
         } catch (Exception $e) {
                   
             // print fatal error to public
@@ -210,7 +210,7 @@ class Core
         }
 
         // controller loaded hook
-        do_action('cloudfrontpagecache_controller_loaded', $controller_name);
+        do_action('cf_page_cache_controller_loaded', $controller_name);
     }
 
     /**

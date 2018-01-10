@@ -34,6 +34,7 @@ class AdminView extends Controller implements Controller_Interface
     {
         // instantiate controller
         return parent::construct($Core, array(
+            'admin',
             'options',
             'AdminInvalidation'
         ));
@@ -79,7 +80,7 @@ class AdminView extends Controller implements Controller_Interface
         if (defined('DOING_AJAX')) {
 
             // not a plugin related request
-            if (!isset($_REQUEST['action']) || strpos($_REQUEST['action'], 'cloudfrontpagecache_') !== 0) {
+            if (!isset($_REQUEST['action']) || strpos($_REQUEST['action'], 'cf_page_cache_') !== 0) {
                 return;
             }
 
@@ -163,7 +164,7 @@ class AdminView extends Controller implements Controller_Interface
     final public function display()
     {
         // verify admin permissions
-        if ($this->active_view !== 'intro' && !current_user_can('manage_options')) {
+        if ($this->active_view !== 'intro' && !$this->admin->is_admin()) {
             wp_die('No permission to access this area.');
         }
 

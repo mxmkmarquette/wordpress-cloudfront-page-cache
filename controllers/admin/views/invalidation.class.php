@@ -27,6 +27,7 @@ class AdminViewInvalidation extends AdminViewBase
     {
         // instantiate controller
         return parent::construct($Core, array(
+            'admin',
             'options',
             'aws'
         ));
@@ -61,7 +62,7 @@ class AdminViewInvalidation extends AdminViewBase
     {
 
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
         
@@ -107,7 +108,7 @@ class AdminViewInvalidation extends AdminViewBase
             update_option('cf-page-cache-last-invalidation', $invalidations, false);
         }
 
-        wp_redirect(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation' ), admin_url('options-general.php')));
+        wp_redirect(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 't' => time() ), admin_url('options-general.php')));
         exit;
     }
 }

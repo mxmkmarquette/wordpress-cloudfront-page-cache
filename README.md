@@ -23,7 +23,9 @@ Amazon AWS CloudFront is among the [fastest](https://encrypted.google.com/search
 
 ![CloudFront network 2017](https://github.com/optimalisatie/cloudfront-page-cache/blob/master/admin/images/aws-cloudfront-network-2017.png)
 
-This page cache solution makes it possible to use a 5 USD VPS for a heavy WordPress + WooCommerce installation while being capable of handling hundreds of visitors per day (with a fast page speed and good results in Google) for an additional 5 to 10 USD per month in AWS costs. An example is our demo website www.e-scooter.co which is hosted on a cheap VPS in Switzerland. The website was created in July 2017 and it already has #1 positions in Google for premium search terms in the U.S., India and other regions. The total bill for December 2017, including www.pagespeed.pro, www.fastestwebsite.co and some other websites, was $8.89 USD.
+This page cache solution makes it possible to use a 5 USD VPS for a heavy WordPress + WooCommerce installation while being capable of handling hundreds of visitors per day (with a fast page speed and good results in Google) for an additional $0.50+ USD per month in AWS costs. For a small business website, the total costs will be less than $1 USD per month while international website speed + Google rankings are of high value.
+
+An example is our demo website www.e-scooter.co which is hosted on a cheap VPS in Switzerland. The website was created in July 2017 and it already has #1 positions in Google for premium search terms in the U.S., India and other regions. The total CloudFront bill for December 2017, including www.pagespeed.pro, www.fastestwebsite.co and some other websites was $0.74 USD.
 
 We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback to [info@pagespeed.pro](mailto:info@pagespeed.pro).
 

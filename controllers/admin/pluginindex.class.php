@@ -33,7 +33,7 @@ class AdminPluginIndex extends Controller implements Controller_Interface
     {
         
         // settings link on plugin index
-        add_filter('plugin_action_links_cloudfront-page-cache/cloudfront-page-cache.php', array($this, 'settings_link'));
+        add_filter('plugin_action_links_cf-page-cache/cf-page-cache.php', array($this, 'settings_link'));
 
         // meta links on plugin index
         add_filter('plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2);
@@ -72,7 +72,7 @@ class AdminPluginIndex extends Controller implements Controller_Interface
             }
 
             $row_meta = array(
-                'cloudfrontpagecache_scores' => '<a href="' . esc_url('https://console.aws.amazon.com/cloudfront/home') . '" target="_blank" title="' . esc_attr(__('Amazon AWS CloudFront Console', 'cloudfront-page-cache')) . '">' . __('AWS CloudFront Console', 'cloudfront-page-cache') . '</a>'
+                'cf_page_cache_scores' => '<a href="' . esc_url('https://console.aws.amazon.com/cloudfront/home') . '" target="_blank" title="' . esc_attr(__('Amazon AWS CloudFront Console', 'cloudfront-page-cache')) . '">' . __('AWS CloudFront Console', 'cloudfront-page-cache') . '</a>'
             );
 
             return array_merge($links, $row_meta);
@@ -87,7 +87,7 @@ class AdminPluginIndex extends Controller implements Controller_Interface
     public function plugin_title()
     {
         ?><script>
-jQuery(function() { if (typeof cfpagecachedir !== 'undefined') { var img = '<img src="' + cfpagecachedir + 'admin/images/aws-block.svg" style="width:48px;height:48px;" align="absmiddle" title="AWS CloudFront Page Cache" style="margin-right:2px;">'; } else { var img = ''; } jQuery('*[data-plugin="cloudfront-page-cache/cloudfront-page-cache.php"] .plugin-title strong').html(img + ' CloudFront Page Cache'); });
+jQuery(function() { if (typeof cfpagecachedir !== 'undefined') { var img = '<img src="' + cfpagecachedir + 'admin/images/aws-block.svg" style="width:48px;height:48px;" align="absmiddle" title="AWS CloudFront Page Cache" style="margin-right:2px;">'; } else { var img = ''; } jQuery('*[data-plugin="cf-page-cache/cf-page-cache.php"] .plugin-title strong').html(img + ' CloudFront Page Cache'); });
 </script><?php
     }
 }

@@ -102,7 +102,7 @@ var cfpc_confirm_purge = function(el) {
                 'parent' => 'cloudfront-page-cache-top',
                 'id' => 'cloudfront-page-cache-clear-cf-page',
                 'title' => __('CF: Invalidate Page', 'cloudfront-page-cache'),
-                'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'page', 'path' => $path, 'return' => $currenturl ), admin_url('options-general.php')),
+                'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'page', 'path' => $path, 'return' => $currenturl, 't' => time() ), admin_url('options-general.php')),
                 'meta' => array( 'title' => __('Clear CloudFront cache for current page.', 'cloudfront-page-cache'), 'onclick' => 'return cfpc_confirm_purge(this);' )
             ));
         }
@@ -119,7 +119,7 @@ var cfpc_confirm_purge = function(el) {
             'parent' => 'cloudfront-page-cache-second',
             'id' => 'cloudfront-page-cache-clear-cf',
             'title' => __('CF: Invalidate All <code>/*</code>', 'cloudfront-page-cache'),
-            'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'cf', 'return' => ($is_admin) ? false : $currenturl ), admin_url('options-general.php')),
+            'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'cf', 'return' => ($is_admin) ? false : $currenturl, 't' => time() ), admin_url('options-general.php')),
             'meta' => array( 'title' => __('Clear CloudFront cache for all pages.', 'cloudfront-page-cache'), 'onclick' => 'return cfpc_confirm_purge(this);' )
         ));
 
@@ -127,7 +127,7 @@ var cfpc_confirm_purge = function(el) {
             'parent' => 'cloudfront-page-cache-second',
             'id' => 'cloudfront-page-cache-clear-plugins',
             'title' => __('Clear Plugin Caches', 'cloudfront-page-cache'),
-            'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'plugins', 'return' => ($is_admin) ? false : $currenturl ), admin_url('options-general.php')),
+            'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'plugins', 'return' => ($is_admin) ? false : $currenturl, 't' => time() ), admin_url('options-general.php')),
             'meta' => array( 'title' => __('Clear the cache of page cache related plugins such as Autoptimize, WP Super Cache and others.', 'cloudfront-page-cache'), 'onclick' => 'return cfpc_confirm_purge(this);' )
         ));
 
@@ -135,7 +135,7 @@ var cfpc_confirm_purge = function(el) {
             'parent' => 'cloudfront-page-cache-second',
             'id' => 'cloudfront-page-cache-clear-all',
             'title' => __('Clear All: CF + Plugin Caches', 'cloudfront-page-cache'),
-            'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'all', 'return' => ($is_admin) ? false : $currenturl ), admin_url('options-general.php')),
+            'href' => add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 'purge' => 'all', 'return' => ($is_admin) ? false : $currenturl, 't' => time() ), admin_url('options-general.php')),
             'meta' => array( 'title' => __('Invalidate all pages on CloudFront (/*) + clear the cache of plugins such as Autoptimize, WP Super Cache and others.', 'cloudfront-page-cache'), 'onclick' => 'return cfpc_confirm_purge(this);' )
         ));
 

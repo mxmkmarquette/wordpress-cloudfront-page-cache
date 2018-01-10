@@ -33,7 +33,6 @@ abstract class Controller
     protected $AdminPluginIndex;
     protected $AdminMenu;
     protected $AdminMenuBar;
-    protected $AdminAjax;
     protected $AdminView;
     protected $AdminMenuTabs;
     protected $AdminInvalidation;
@@ -85,8 +84,8 @@ abstract class Controller
 
         // bind controllers after setup
         if (!empty($this->bind_after_setup)) {
-            add_action('cloudfrontpagecache_controller_setup_completed', array($this,'after_controller_setup'), $this->first_priority, 1);
-            add_action('cloudfrontpagecache_setup_completed', array($this,'after_optimization_setup'), $this->first_priority);
+            add_action('cf_page_cache_controller_setup_completed', array($this,'after_controller_setup'), $this->first_priority, 1);
+            add_action('cf_page_cache_setup_completed', array($this,'after_optimization_setup'), $this->first_priority);
         }
     }
 
@@ -124,7 +123,7 @@ abstract class Controller
         }
 
         // controller setup completed
-        do_action('cloudfrontpagecache_controller_setup_completed', $controller_classname);
+        do_action('cf_page_cache_controller_setup_completed', $controller_classname);
 
         // return controller
         return self::$instances[$controller_classname];

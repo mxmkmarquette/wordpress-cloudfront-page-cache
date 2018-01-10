@@ -27,6 +27,7 @@ class AdminViewSettings extends AdminViewBase
     {
         // instantiate controller
         return parent::construct($Core, array(
+            'admin',
             'options',
             'error',
             'aws'
@@ -60,7 +61,7 @@ class AdminViewSettings extends AdminViewBase
     public function update_settings()
     {
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
         
@@ -125,7 +126,7 @@ class AdminViewSettings extends AdminViewBase
 
         $this->error->add_notice('Settings saved.', 'SUCCESS');
 
-        wp_redirect(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'settings' ), admin_url('options-general.php')));
+        wp_redirect(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'settings', 't' => time() ), admin_url('options-general.php')));
         exit;
     }
 }

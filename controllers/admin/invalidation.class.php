@@ -30,6 +30,7 @@ class AdminInvalidation extends Controller implements Controller_Interface
     {
         // instantiate controller
         return parent::construct($Core, array(
+            'admin',
             'options',
             'aws',
             'shutdown'
@@ -88,7 +89,7 @@ class AdminInvalidation extends Controller implements Controller_Interface
     {
 
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
 
@@ -118,26 +119,37 @@ class AdminInvalidation extends Controller implements Controller_Interface
                 }
 
                 // create invalidation for all pages
-                $this->aws->create_invalidations($path);
+                try {
+                    $this->aws->create_invalidations($path);
+                } catch (Exception $err) {
+                }
             break;
             case "cf":
 
-                // create invalidation for all pages
-                $this->aws->create_invalidations('/*');
+                try {
+                    // create invalidation for all pages
+                    $this->aws->create_invalidations('/*');
+                } catch (Exception $err) {
+                }
             break;
             case "plugins":
 
                 // clear cache of page cache related plugins such as Autoptimize, WP Super Cache and others
-                $this->clear_plugin_caches();
+                try {
+                    $this->clear_plugin_caches();
+                } catch (Exception $err) {
+                }
             break;
             case "all":
 
-                // clear cache of page cache related plugins such as Autoptimize, WP Super Cache and others
-                $this->clear_plugin_caches();
+                try {
+                    // clear cache of page cache related plugins such as Autoptimize, WP Super Cache and others
+                    $this->clear_plugin_caches();
 
-                // create invalidation for all pages
-                $this->aws->create_invalidations('/*');
-
+                    // create invalidation for all pages
+                    $this->aws->create_invalidations('/*');
+                } catch (Exception $err) {
+                }
             break;
         }
 
@@ -146,7 +158,7 @@ class AdminInvalidation extends Controller implements Controller_Interface
             wp_redirect($return);
             exit;
         } else {
-            wp_redirect(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation' ), admin_url('options-general.php')));
+            wp_redirect(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'invalidation', 't' => time() ), admin_url('options-general.php')));
             exit;
         }
     }
@@ -158,7 +170,7 @@ class AdminInvalidation extends Controller implements Controller_Interface
     {
 
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
 
@@ -254,7 +266,7 @@ class AdminInvalidation extends Controller implements Controller_Interface
     {
 
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
 
@@ -306,7 +318,7 @@ class AdminInvalidation extends Controller implements Controller_Interface
     {
 
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
 
@@ -325,7 +337,7 @@ class AdminInvalidation extends Controller implements Controller_Interface
     {
 
         // verify admin permissions
-        if (!current_user_can('manage_options')) {
+        if (!$this->admin->is_admin()) {
             return;
         }
 

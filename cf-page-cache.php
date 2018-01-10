@@ -18,15 +18,15 @@
  * Domain Path:       /languages
  */
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 define('CF_FPC_VERSION', '1.0.0');
 define('CF_FPC_URI', plugin_dir_url(__FILE__));
 define('CF_FPC_PATH', plugin_dir_path(__FILE__));
 define('CF_FPC_PLUGIN', plugin_basename(__FILE__));
 define('CF_FPC_SELF', __FILE__);
-
-if (! defined('WPINC')) {
-    die;
-}
 
 // abort loading during upgrades
 if (defined('WP_INSTALLING') && WP_INSTALLING) {

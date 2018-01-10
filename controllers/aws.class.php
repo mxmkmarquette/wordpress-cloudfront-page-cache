@@ -64,7 +64,7 @@ class Aws extends Controller implements Controller_Interface
                 $$key = $this->{$key};
             }
             if (empty($$key)) {
-                throw new Exception('Failed to load AWS API. AWS Access Credential <code>'.$key.'</code> missing.');
+                throw new Exception('Failed to load AWS API. AWS Access Credential <code>'.$key.'</code> missing.', false, array('persist' => 'expire','max-views' => 2));
             }
         }
  
@@ -82,9 +82,9 @@ class Aws extends Controller implements Controller_Interface
                 )
             ));
         } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         } catch (\AwsException $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         }
     }
 
@@ -106,7 +106,7 @@ class Aws extends Controller implements Controller_Interface
         }
 
         if (empty($distribution_id)) {
-            throw new Exception('Distribution ID missing.');
+            throw new Exception('Distribution ID missing.', false, array('persist' => 'expire','max-views' => 2));
         }
 
         try {
@@ -114,9 +114,9 @@ class Aws extends Controller implements Controller_Interface
                 'DistributionId' => $distribution_id
             ));
         } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         } catch (\AwsException $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         }
 
         return ($result && $result->get('InvalidationList')) ? true : false;
@@ -139,9 +139,9 @@ class Aws extends Controller implements Controller_Interface
                 'Id' => $id
             ));
         } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
-            throw new Exception('Failed to get CloudFront invalidation: '. $e->getMessage());
+            throw new Exception('Failed to get CloudFront invalidation: '. $e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         } catch (\AwsException $e) {
-            throw new Exception('Failed to get CloudFront invalidation: '. $e->getMessage());
+            throw new Exception('Failed to get CloudFront invalidation: '. $e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         }
 
         $invalidation = $invalidation_result->get('Invalidation');
@@ -191,9 +191,9 @@ class Aws extends Controller implements Controller_Interface
                 )
             ));
         } catch (\Aws\CloudFront\Exception\CloudFrontException $e) {
-            throw new Exception('CloudFront invalidation failed: '. $e->getMessage());
+            throw new Exception('CloudFront invalidation failed: '. $e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         } catch (\AwsException $e) {
-            throw new Exception('CloudFront invalidation failed: '. $e->getMessage());
+            throw new Exception('CloudFront invalidation failed: '. $e->getMessage(), false, array('persist' => 'expire','max-views' => 2));
         }
 
         $invalidation = $invalidation_result->get('Invalidation');

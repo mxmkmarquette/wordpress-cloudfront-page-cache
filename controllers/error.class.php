@@ -93,7 +93,10 @@ class Error extends Controller implements Controller_Interface
 
         // admin notice
         if ($admin_notice) {
-            $this->add_notice($error->getMessage());
+            if (!is_array($admin_notice)) {
+                $admin_notice = array();
+            }
+            $this->add_notice($error->getMessage(), 'ERROR', $admin_notice);
         }
 
         if ($error->isFatal()) {
