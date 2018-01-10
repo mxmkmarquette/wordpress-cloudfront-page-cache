@@ -19,13 +19,9 @@ This is the first version of the plugin but the underlying technologies have bee
 
 A big advantage of using CloudFront as a page cache for international SEO is that Amazon provides dedicated IP's for geographic regions. This means that a website will physically load from a location near the visitor. For a visitor from Sweden the website may be physically loaded from a server and IP in Stockholm.
 
-![CloudFront performance PageSpeed.pro](https://pagespeed.pro/wp-content/plugins/cloudfront-page-cache/admin/images/pagespeed-aws-cloudfront.png)
-
 An other advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs may litterally be a few dollars per month. Amazon provides free SSL certificates and there are no hidden costs.
 
 Amazon AWS CloudFront is among the [fastest](https://encrypted.google.com/search?q=cloudfront+vs) CDN providers available with the greatest global network. This makes it a perfect option for any website that wants to reach an international audience or that simply wants a fast and secure page cache for a low cost VPS.
-
-![CloudFront network 2017](https://pagespeed.pro/wp-content/plugins/cloudfront-page-cache/admin/images/aws-cloudfront-network-2017.png)
 
 This page cache solution makes it possible to use a 5 USD VPS for a heavy WordPress + WooCommerce installation while being capable of handling hundreds of visitors per day (with a fast page speed and good results in Google) for an additional $0.50+ USD per month in AWS costs. For a small business website, the total costs will be less than $1 USD per month while international website speed + Google rankings are of high value.
 
@@ -54,7 +50,7 @@ To get started, login to [AWS CloudFront Console](https://console.aws.amazon.com
 
 The other settings are optional but we advise to install a SSL certificate, force SSL using *Viewer Policy: Redirect HTTP to HTTPS*, forward query strings using *Forward all, cache based on whitelist* (useful for debugging and cache busting) and *Compress Objects Automatically* (enabled). You should also look at the option *Origin Protocol Policy*. If your origin forces SSL then the setting should be *HTTPS only*.
 
-*Done**
+**Done**
 
 CloudFront will setup the distribution in a few minutes.
 
