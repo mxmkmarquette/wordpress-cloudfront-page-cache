@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
     <div class="other-notices-notice" style="display:none;"><strong class="count"></strong> notices from other plugins have been hidden. <a href="javascript:void(0);" class="show" data-hide="Hide notices">Show notices</a></div>
     <div class="other-notices" style="display:none;"><div class="wp-header-end"></div></div>
 
-    <a href="https://aws.amazon.com/cloudfront/?sc_channel=O10N&sc_campaign=cloudfront_page_cache&sc_publisher=wordpress&sc_medium=plugin&sc_content=cloudfront_page_cache" target="_blank" rel="noopener"><img src="<?php print plugins_url('admin/images/amazon-cloudfront.png', 'cloudfront-page-cache/cloudefront-page-cache.php'); ?>" height="80" style="position:absolute;top:1em;right:1em;z-index:10;"></a> 
+    <a href="https://aws.amazon.com/cloudfront/?sc_channel=O10N&sc_campaign=cloudfront_page_cache&sc_publisher=wordpress&sc_medium=plugin&sc_content=cloudfront_page_cache" target="_blank" rel="noopener"><img src="<?php print plugins_url('admin/images/amazon-cloudfront.png', 'cf-page-cache/cf-page-cache.php'); ?>" height="80" style="position:absolute;top:1em;right:1em;z-index:10;"></a> 
     <h1 class="cloudfrontpagecache-title" style="vertical-align:middle;">CloudFront <strong>Page Cache</strong></h1>
 
     <div id="cloudfrontpagecache-notices"><?php

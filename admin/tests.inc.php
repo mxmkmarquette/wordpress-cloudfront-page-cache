@@ -46,7 +46,7 @@ if (!$currenturl_host) {
 
 ?>
 
-<a href="<?php print esc_url($thinkurl);?>" target="_blank" rel="noopener"><img src="<?php print plugins_url('admin/images/google-ai-benchmark.png', 'cloudfront-page-cache/cloudefront-page-cache.php'); ?>" border="0" style="float:right;border:1px solid #e5e5e5;border-radius:2px;"></a>
+<a href="<?php print esc_url($thinkurl);?>" target="_blank" rel="noopener"><img src="<?php print plugins_url('admin/images/google-ai-benchmark.png', 'cf-page-cache/cf-page-cache.php'); ?>" border="0" style="float:right;border:1px solid #e5e5e5;border-radius:2px;"></a>
 <h1>International Website Speed Tests</h1>
 
 <p>The following free services enable to test the international performance of the CloudFront page cache installation. For SEO purposes, we advise to achieve an <span style="color:#079c2d;font-weight:bold;">Excellent</span> score in Google's latest <a href="<?php print esc_url($thinkurl);?>" target="_blank" rel="noopener">AI + benchmark based mobile speed test</a>.</p>
