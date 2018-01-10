@@ -11,7 +11,7 @@
  * @wordpress-plugin
  * Plugin Name:       CloudFront Page Cache CDN
  * Description:       Low cost and high performance page cache based on Amazon's CloudFront CDN for international SEO. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            PageSpeed.pro
  * Author URI:        https://pagespeed.pro/
  * Text Domain:       cloudfront-page-cache
@@ -22,7 +22,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('CF_FPC_VERSION', '1.0.0');
+define('CF_FPC_VERSION', '1.0.1');
 define('CF_FPC_URI', plugin_dir_url(__FILE__));
 define('CF_FPC_PATH', plugin_dir_path(__FILE__));
 define('CF_FPC_PLUGIN', plugin_basename(__FILE__));
