@@ -19,7 +19,7 @@ This is the first version of the plugin but the underlying technologies have bee
 
 A big advantage of using CloudFront as a page cache for international SEO is that Amazon provides dedicated IP's for geographic regions. This means that a website will physically load from a location near the visitor. For a visitor from Sweden the website may be physically loaded from a server and IP in Stockholm.
 
-An other advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs may litterally be a few dollars per month. Amazon provides free SSL certificates and there are no hidden costs.
+An other advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs may litterally be less than 1 dollar per month. Amazon provides free SSL certificates and there are no hidden costs.
 
 Amazon AWS CloudFront is among the [fastest](https://encrypted.google.com/search?q=cloudfront+vs) CDN providers available with the greatest global network. This makes it a perfect option for any website that wants to reach an international audience or that simply wants a fast and secure page cache for a low cost VPS.
 

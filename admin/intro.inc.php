@@ -63,7 +63,7 @@ if ($budget_stats['percentage'] >= 90) {
 			<p>A big advantage of using CloudFront as a page cache for international SEO is that Amazon provides dedicated IP's for geographic regions. This means that a website will physically load from a location near the visitor. For a visitor from Sweden the website may be physically loaded from a server and IP in Stockholm.</p>
 			<p><img src="<?php print plugins_url('admin/images/pagespeed-aws-cloudfront.png', 'cf-page-cache/cf-page-cache.php'); ?>"></p>
 
-			<p>An other advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs may litterally be a few dollars per month. Amazon provides free SSL certificates and there are no hidden costs.</p>
+			<p>An other advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs may litterally be less than 1 dollar per month. Amazon provides free SSL certificates and there are no hidden costs.</p>
 			<p>Amazon AWS CloudFront is among the <a href="https://encrypted.google.com/search?q=cloudfront+vs" target="_blank" rel="noopener">fastest</a> CDN providers available with the greatest global network. This makes it a perfect option for any website that wants to reach an international audience or that simply wants a fast and secure page cache for a low cost VPS.</p>
 
 			<p><img src="<?php print plugins_url('admin/images/aws-cloudfront-network-2017.png', 'cf-page-cache/cf-page-cache.php'); ?>"></p>
@@ -73,7 +73,7 @@ if ($budget_stats['percentage'] >= 90) {
 
 			<p>We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback to <a href="mailto:info@pagespeed.pro">info@pagespeed.pro</a></p>
 			<p>If you are happy with the plugin, please consider to <a href="https://wordpress.org/support/plugin/cf-page-cache/reviews/" target="_blank" rel="noopener">write a review</a>.</p>
-			
+
 		</div>
 	</div>
 	</div>
