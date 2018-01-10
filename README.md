@@ -4,7 +4,7 @@
 
 Low cost and high performance page cache based on Amazon's CloudFront CDN that provides international fast website speed and dedicated geographic IP's for local SEO advantage.
 
-* <a href="https://wordpress.org/plugins/cf-page-cache/">Documentation</a>
+* <a href="https://wordpress.org/plugins/cf-page-cache/#installation">Documentation</a>
 * <a href="https://wordpress.org/plugins/cf-page-cache/">WordPress Profile</a>
 
 ### Introduction
