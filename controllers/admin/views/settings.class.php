@@ -85,6 +85,7 @@ class AdminViewSettings extends AdminViewBase
         $options['host'] = (isset($input['host'])) ? trim($input['host']) : '';
         $options['origin'] = (isset($input['origin'])) ? trim($input['origin']) : '';
         $options['domain'] = (isset($input['domain'])) ? trim($input['domain']) : '';
+        $options['cache_age'] = (isset($input['cache_age'])) ? trim($input['cache_age']) : '';
 
         $options['invalidation'] = (isset($input['invalidation']) && intval($input['invalidation']) === 1) ? true : false;
         $options['distribution_id'] = (isset($input['distribution_id'])) ? trim($input['distribution_id']) : '';
@@ -99,6 +100,12 @@ class AdminViewSettings extends AdminViewBase
             if ($options['host'] === '' || $options['origin'] === '') {
                 $this->error->add_notice('To enable the page cache you need to configure the public and origin host.');
             }
+        }
+
+        // verify cache age
+        if ($options['cache_age'] && !is_numeric($options['cache_age'])) {
+            $options['cache_age'] = '';
+            $this->error->add_notice('Cache age is not numeric.');
         }
 
         if ($options['invalidation'] && $options['api_test']) {

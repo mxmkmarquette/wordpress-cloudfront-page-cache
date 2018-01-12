@@ -238,7 +238,7 @@ class Core
     /**
      * Return instance
      */
-    final public static function get_instance($controller = false)
+    final public static function get($controller = false)
     {
         if ($controller) {
             if (!isset(self::$instance->controllers[$controller])) {

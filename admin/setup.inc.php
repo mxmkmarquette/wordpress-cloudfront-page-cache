@@ -132,3 +132,11 @@ function cloudfront_page_cache_origin_hosts_rewrite($paths) {
 add_filter('cfpc-origin-hosts-filter', 'cloudfront_page_cache_origin_hosts_rewrite');
 </pre>
 <p>This plugin does not rewrite URLs in the HTML. It only modifies the result of native WordPress URL filters such as <code>home_url</code> and <code>admin_url</code>.</p>
+
+<h1 id="dynamic-content">Caching dynamic content</h1>
+
+<p>CloudFront enables to cache dynamic content based on HTTP headers and cookies in the advanced settings of the CloudFront Console. For help setting up dynamic content caching, post your question to the <a href="https://forums.aws.amazon.com/forum.jspa?forumID=46" target="_blank" rel="noopener">AWS CloudFront support forum</a>.</p>
+
+<fieldset><legend>CloudFront Cache Settings</legend>
+<img src="<?php print plugins_url('admin/images/cookie-cache.png', 'cf-page-cache/cf-page-cache.php'); ?>" style="max-width:100%;">
+</fieldset>

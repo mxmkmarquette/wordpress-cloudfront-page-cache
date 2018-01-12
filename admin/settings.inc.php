@@ -73,6 +73,25 @@ if (!$host_www) {
 		</td>
 	</tr>
 	<tr valign="top">
+		<th scope="row">Default Cache Age</th>
+		<td>
+			<input type="number" name="cfpc[cache_age]" size="20" value="<?php print esc_attr((isset($options['cache_age'])) ? $options['cache_age'] : ''); ?>" placeholder="Time in seconds..." />
+			<p class="description">Enter the default CloudFront page cache age in seconds. The cache expire time is controlled by <a href="https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/http-caching" target="_blank" rel="noopener">HTTP cache headers</a>. The default expire time is 7 days.</p>
+			<p class="description">You can manually set the cache expire time for a page using the methods <code>CloudFrontPageCache\set_age( .. )</code> and <code>CloudFrontPageCache\set_expire( .. )</code> in your theme's functions.php (<a href="javascript:void(0);" onclick="jQuery('#example_http_cache').toggle();">show example</a>).</p>
+			<pre id="example_http_cache" style="display:none;">
+if (!is_admin()) {
+    CloudFrontPageCache\set_age(86400 * 7);
+}
+			</pre>
+		</td>
+	</tr>
+	<tr valign="top">
+		<th scope="row">Dynamic Content</th>
+		<td>
+			<p>See the <a href="<?php print esc_url(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'setup' ), admin_url('options-general.php'))); ?>#dynamic-content">Setup Guide</a> for information on how to setup caching for dynamic content, a unique feature of CloudFront.</p>
+		</td>
+	</tr>
+	<tr valign="top">
 		<th scope="row">Cache Invalidation</th>
 		<td>
 			<label><input type="checkbox" name="cfpc[invalidation]" value="1" onchange="if (jQuery(this).is(':checked')) { jQuery('.autopurge').show(); } else { jQuery('.autopurge').hide(); } "<?php if (isset($options['invalidation']) && $options['invalidation']) {
