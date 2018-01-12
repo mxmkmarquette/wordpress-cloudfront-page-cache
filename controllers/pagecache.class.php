@@ -143,7 +143,7 @@ class Pagecache extends Controller implements Controller_Interface
         }
 
         // max age header
-        if (!$this->expire_age && !is_numeric($expire_age)) {
+        if (!$this->expire_age && !is_numeric($this->expire_age)) {
             $age = ($this->expire_date - $time);
         } else {
             $age = $this->expire_age;

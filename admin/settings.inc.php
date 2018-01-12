@@ -88,7 +88,7 @@ if (!is_admin()) {
 	<tr valign="top">
 		<th scope="row">Dynamic Content</th>
 		<td>
-			<p>See the <a href="<?php print esc_url(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'setup' ), admin_url('options-general.php'))); ?>#dynamic-content">Setup Guide</a> for information on how to setup caching for dynamic content, a unique feature of CloudFront.</p>
+			<p>See the <a href="<?php print esc_url(add_query_arg(array( 'page' => 'cloudfront-page-cache', 'view' => 'setup' ), admin_url('options-general.php'))); ?>#dynamic-content">Setup Guide</a> for information on how to setup caching for dynamic content, a feature of CloudFront.</p>
 		</td>
 	</tr>
 	<tr valign="top">
@@ -102,7 +102,7 @@ if (!is_admin()) {
 			<div class="notice inline" style="margin:0px;margin-top:1em;padding-top:7px;padding-bottom:5px;">
 			<strong>Warning:</strong> CloudFront provides a free invalidation budget of 1000 invalidations per month. Additional cache invalidations are charged at $0.005 USD per path requested for invalidation. See the <a href="https://aws.amazon.com/cloudfront/pricing/?<?php print $this->aws_tracking; ?>" target="_blank" rel="noopener">pricing documentation</a> for more information. To clear all cached pages with a single path you can use the wildcard path <code>/*</code>.
 			<p>This plugin provides a counter functionality to keep track of invalidation usage and cache invalidation can be enabled or disabled manually when updating a post.</p>
-			<p style="margin-bottom:0px;"><strong>Tip:</strong> to prevent invalidation costs during testing it is possible to use a Windows, Mac or Linux hosts file to directly access the public host from the server IP, bypassing CloudFront. <a href="https://encrypted.google.com/search?q=configure+hosts+file+windows+mac" target="_blank" rel="noopener">Search Google</a> for instructions.</p></div>
+			<p style="margin-bottom:0px;"><strong>Tip:</strong> to prevent invalidation costs during testing it is possible to use a Windows, Mac or Linux hosts file to directly access the public host from the server IP, bypassing CloudFront. This may also provide a solution for relatively safe testing without a test environment. <a href="https://encrypted.google.com/search?q=configure+hosts+file+windows+mac" target="_blank" rel="noopener">Search Google</a> for instructions.</p></div>
 		</td>
 	</tr>
 	<tr valign="top" class="autopurge" style="<?php print (isset($options['invalidation']) && $options['invalidation']) ? '' : 'display:none;'; ?>">

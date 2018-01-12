@@ -2,7 +2,7 @@
 /**
  * CloudFront Page Cache CDN
  *
- * Low cost and high performance page cache based on Amazon's CloudFront CDN for international SEO. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
+ * Low cost and high performance page cache for international SEO based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
  *
  * @link              https://pagespeed.pro/
  * @since             1.0
@@ -10,7 +10,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       CloudFront Page Cache CDN
- * Description:       Low cost and high performance page cache based on Amazon's CloudFront CDN for international SEO. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
+ * Description:       Low cost and high performance page cache for international SEO based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
  * Version:           1.0.2
  * Author:            PageSpeed.pro
  * Author URI:        https://pagespeed.pro/

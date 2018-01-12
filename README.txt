@@ -9,7 +9,7 @@ Stable tag: 4.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Low cost and high performance page cache based on Amazon's CloudFront CDN for international SEO. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
+Low cost and high performance page cache for international SEO based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
 
 == Description ==
 
