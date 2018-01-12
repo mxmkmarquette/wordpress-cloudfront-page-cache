@@ -20,6 +20,9 @@ class Pagecache extends Controller implements Controller_Interface
 
     private $cloudfront_pull = false;
 
+    private $default_cache_age = 604800; // maintain cache for 7 days by default
+    private $expire_date; // CloudFront cache expire date (HTTP headers)
+
     /**
      * Load controller
      *
@@ -204,5 +207,19 @@ class Pagecache extends Controller implements Controller_Interface
         }
 
         return $items;
+    }
+
+    /**
+     * Set CloudFront cache age
+     */
+    final public static function set_age($age)
+    {
+    }
+
+    /**
+     * Set CloudFront cache expire date
+     */
+    final public static function set_expire($timestamp)
+    {
     }
 }

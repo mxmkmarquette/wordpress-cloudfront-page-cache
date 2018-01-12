@@ -23,7 +23,13 @@ An other advantage of Amazon AWS CloudFront as a page cache is that they provide
 
 Amazon AWS CloudFront is among the [fastest](https://encrypted.google.com/search?q=cloudfront+vs) CDN providers available with the greatest global network. This makes it a perfect option for any website that wants to reach an international audience or that simply wants a fast and secure page cache for a low cost VPS.
 
-This page cache solution makes it possible to use a 5 USD VPS for a heavy WordPress + WooCommerce installation while being capable of handling hundreds of visitors per day (with a fast page speed and good results in Google) for an additional $0.50+ USD per month in AWS costs. For a small business website, the total costs will be less than $1 USD per month while international website speed + Google rankings are of high value.
+## Solution for emerging markets
+
+Internet connectivity, speed and reliability is a major issue in some regions of the world affecting hundreds of millions of people. Regions such as Asia, India and Indonesia may also have many innovators and small business startups who produce or sell products that could be very attractive to other regions of the world, but they may lack financial resources to reach customers beyond their local market.
+
+The CloudFront page cache solution makes it possible to solve slow and unreliable internet issues for just $0.05 USD in total costs per month for a small blog. This plugin enables to use a 5 USD VPS for a heavy WordPress + WooCommerce installation while being capable of handling thousands of visitors per day (with a fast page speed and good results in Google) for just $0.50+ USD per month in AWS costs. The solution also enables a website to grow from 100 visitors per day to 100.000 visitors per day without a problem (besides costs). For a small business website, the total costs will be about $0.05 to $0.10 USD per month while international website speed + Google rankings are of high value.
+
+### Demo website
 
 An example is our demo website [www.e-scooter.co](https://www.e-scooter.co/) which is hosted on a cheap VPS in Switzerland. The website was created in July 2017 and it already has #1 positions in Google for premium search terms in the U.S., India and other regions. The total CloudFront bill for December 2017, including www.pagespeed.pro, www.fastestwebsite.co and some other websites was $0.74 USD.
 
@@ -63,6 +69,10 @@ CloudFront will setup the distribution in a few minutes.
 5. CloudFront Network (2017)
 
 == Changelog ==
+
+= 1.0.2 =
+* Added functionality to set CloudFront cache age or expire date (HTTP headers).
+* Added default CloudFront cache age setting.
 
 = 1.0 =
 * The first version.
