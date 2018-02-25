@@ -1,4 +1,4 @@
-<p align="right"><img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/admin/images/amazon-cloudfront.png" height="125"> <img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/admin/images/aws-cloudfront-100.png"></p> 
+<p align="right"><img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/amazon-cloudfront.png" height="125"> <img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/aws-cloudfront-100.png"></p> 
 
 ## CloudFront Page Cache
 
