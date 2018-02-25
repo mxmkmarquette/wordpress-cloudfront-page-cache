@@ -58,9 +58,9 @@ If you use a `.htaccess`, Apache or Nginx based www. redirect then it will be re
 RewriteEngine On
 ...
 
-<span style="color:#E48700;font-weight:bold;"># CloudFront origin pull detection</span>
-<span style="color:#1166BB;font-weight:bold;">RewriteCond %{HTTP:X-CF-PAGE-CACHE} !=1 [NC]
-RewriteCond %{REQUEST_URI} !^/wp-(admin|login) # enable /wp-admin/ access on origin</span>
+# CloudFront origin pull detection
+RewriteCond %{HTTP:X-CF-PAGE-CACHE} !=1 [NC]
+RewriteCond %{REQUEST_URI} !^/wp-(admin|login) # enable /wp-admin/ access on origin
 ...
 RewriteCond %{HTTP_HOST} !^www\.
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
@@ -74,29 +74,29 @@ server {
     server_name your-domain.com;
     ... 
 
-    <span style="color:#E48700;font-weight:bold;"># CloudFront origin pull detection</span>
-    <span style="color:#1166BB;font-weight:bold;">set $cloudfront_origin "";
+    # CloudFront origin pull detection
+    set $cloudfront_origin "";
     if ($http_x_cf_page_cache = "1") { 
         set $cloudfront_origin "y";
-    }</span>
+    }
 
-    <span style="color:#E48700;font-weight:bold;"># conditional non-www. to www. redirect</span>
-    <span style="color:#1166BB;font-weight:bold;">if ($http_host = "your-domain.com") {
+    # conditional non-www. to www. redirect
+    if ($http_host = "your-domain.com") {
         set $cloudfront_origin "${cloudfront_origin}x";
-    }</span>
+    }
 
-    <span style="color:#E48700;font-weight:bold;"># enable /wp-admin on origin</span>
-    <span style="color:#1166BB;font-weight:bold;">if ($request_uri ~ "/wp-admin/"){
+    # enable /wp-admin on origin
+    if ($request_uri ~ "/wp-admin/"){
         set $cloudfront_origin "${cloudfront_origin}a";
     }
     if ($request_uri ~ "/wp-login.php"){
         set $cloudfront_origin "${cloudfront_origin}a";
-    }</span>
+    }
 
-    <span style="color:#E48700;font-weight:bold;"># x = generic non-www. request</span>
-    <span style="color:#1166BB;font-weight:bold;">if ($cloudfront_origin = "x") {
+    # x = generic non-www. request
+    if ($cloudfront_origin = "x") {
         return 301 https://www.your-domain.com$request_uri;
-    }</span>
+    }
 
     ...
     location ~ /\. { deny all; }
