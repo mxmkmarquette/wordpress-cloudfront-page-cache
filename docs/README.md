@@ -28,16 +28,15 @@ Enable the plugin by configuring the plugin settings.
 
 To connect the CloudFront public cache frontend to your website, you will need to add a CNAME record in your DNS server for the public host that you configured as CNAME in the CloudFront distribution. The CNAME should point to the CloudFront Domain Name of your distribution. In our case it is *d1hyhu0m6pwrmw.cloudfront.net*.
 
-<fieldset><legend>CloudFront Console</legend>
-<img src="<?php print plugins_url('admin/images/pagespeed-cloudfront-cname.png', 'cf-page-cache/cf-page-cache.php'); ?>" style="max-width:100%;">
-</fieldset>
+![docs](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/pagespeed-cloudfront-cname.png)
+
 **Note: root domains do not support CNAME (see below).**
 
 If you are unfamiliar with configuring the DNS server you can send a request to your hosting provider or domain registrar to add a CNAME record for `www.your-domain.com` pointing to your CloudFront distribution Domain Name.
-
  
-<h3>Root domain as public domain (https://your-domain.com/)</h3>
-CloudFront supports the use of root domains but only when using an `ALIAS` DNS record in <a href="https://aws.amazon.com/route53/?<?php print $this->aws_tracking; ?>" target="_blank" rel="noopener">Amazon AWS Route 53</a> (cloud geo DNS), an international DNS service. Amazon provides an easy option to select the CloudFront distribution as the alias from the Route 53 settings for your domain. 
+#### Root domain as public domain (https://your-domain.com/)
+
+CloudFront supports the use of a root domain but only when using an `ALIAS` DNS record in <a href="https://aws.amazon.com/route53/?<?php print $this->aws_tracking; ?>" target="_blank" rel="noopener">Amazon AWS Route 53</a> (cloud geo DNS), an international DNS service. Amazon provides an easy option to select the CloudFront distribution as the alias from the Route 53 settings for your domain. 
 
 ![Route 53 config for CloudFront](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/route-53-alias.png)
 
@@ -53,9 +52,9 @@ CloudFront adds HTTP headers with the cache status. To test if the cache is work
 
 If you use a `.htaccess`, Apache or Nginx based www. redirect then it will be required to make a change in the server configuration to allow the CloudFront origin pull request to access the website on the www. or non-www. subdomain respectively.
 
+### Apache (.htaccess) Example
 
-<h3>Apache (.htaccess) Example</h3>
-<pre>
+```apache
 RewriteEngine On
 ...
 
@@ -65,10 +64,11 @@ RewriteCond %{REQUEST_URI} !^/wp-(admin|login) # enable /wp-admin/ access on ori
 ...
 RewriteCond %{HTTP_HOST} !^www\.
 RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
-</pre>
-<br />
-<h3>Nginx Example</h3>
-<pre>
+```
+
+### Nginx Example
+
+```nginx
 server {
     listen 443 ssl http2;
     server_name your-domain.com;
@@ -101,16 +101,17 @@ server {
     ...
     location ~ /\. { deny all; }
 }
-</pre>
-To redirect www. to non-www., simply change the `$http_host` condition to match the www. domain and redirect to non-www.
+```
 
+To redirect www. to non-www., simply change the `$http_host` condition to match the www. domain and redirect to non-www.
     
-## Handling POST requests
+### Handling POST requests
+
 CloudFront does not support HTTP POST requests. If you want to use a submission form that needs to post data to the server then it is required to use a script on the origin host that is not redirected to the public (www. or non-www.) host.
 
 This plugin provides support for processing POST requests on the origin host by automatically rewriting `admin-ajax.php`. You can control the URLs that are rewritten to the origin host using the filter `cfpc-origin-hosts-filter`.
 
-<pre>
+```php
 /** rewrite paths to origin host */
 function cloudfront_page_cache_origin_hosts_rewrite($paths) {
     
@@ -120,15 +121,13 @@ function cloudfront_page_cache_origin_hosts_rewrite($paths) {
     return $paths;
 }
 add_filter('cfpc-origin-hosts-filter', 'cloudfront_page_cache_origin_hosts_rewrite');
-</pre>
+```
+
 This plugin does not rewrite URLs in the HTML. It only modifies the result of native WordPress URL filters such as `home_url` and `admin_url`.
 
+### Caching dynamic content
 
-<h1 id="dynamic-content">Caching dynamic content</h1>
+CloudFront enables to cache dynamic content based on HTTP headers and cookies in the advanced settings of the CloudFront Console. For help setting up dynamic content caching, post your question to the [AWS CloudFront support forum](https://forums.aws.amazon.com/forum.jspa?forumID=46).
 
-CloudFront enables to cache dynamic content based on HTTP headers and cookies in the advanced settings of the CloudFront Console. For help setting up dynamic content caching, post your question to the <a href="https://forums.aws.amazon.com/forum.jspa?forumID=46" target="_blank" rel="noopener">AWS CloudFront support forum</a>.
-
-
-<fieldset><legend>CloudFront Cache Settings</legend>
-<img src="<?php print plugins_url('admin/images/cookie-cache.png', 'cf-page-cache/cf-page-cache.php'); ?>" style="max-width:100%;">
-</fieldset>
+#### CloudFront Cache Settings
+![docs](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/cookie-cache.png)
