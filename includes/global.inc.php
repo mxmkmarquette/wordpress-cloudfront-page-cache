@@ -1,22 +1,28 @@
 <?php
-namespace CloudFrontPageCache;
+namespace O10n\CloudFront;
 
 /**
  * Global functions
  *
- * @package    cloudfront-page-cache
- * @subpackage cloudfront-page-cache/controllers
+ * @package    optimization
+ * @subpackage optimization/controllers
  * @author     Optimization.Team <info@optimization.team>
  */
 
 // set CloudFront cache age for page
-function set_age($age)
+function set_max_age($age)
 {
-    Core::get('pagecache')->set_age($age);
+    \O10n\Core::get('cloudfront')->set_max_age($age);
 }
 
 // set CloudFront cache expire date
 function set_expire($timestamp)
 {
-    Core::get('pagecache')->set_expire($timestamp);
+    \O10n\Core::get('cloudfront')->set_expire($timestamp);
+}
+
+// set CloudFront no cache
+function nocache()
+{
+    \O10n\Core::get('cloudfront')->set_age(-1);
 }

@@ -1,51 +1,41 @@
-=== CloudFront Page Cache ===
-Contributors: optimalisatie
-Donate link: https://pagespeed.pro/
-Tags: cache, cloudfront, aws, amazon, page cache, site cache, cloud, seo, international, performance, speed, page speed, pagespeed, fpc, full page cache, html cache
-Requires at least: 3.0.1
-Tested up to: 4.9
+=== HTTP/2 Optimization ===
+Contributors: o10n
+Donate link: https://github.com/o10n-x/
+Tags: http2, spdy, server push, push, service worker, cache digest, pwa
+Requires at least: 4.0
 Requires PHP: 5.4
-Stable tag: 4.4
+Tested up to: 4.9.4
+Stable tag: 0.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Low cost and high performance page cache for international SEO based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
+Advanced HTTP/2 optimization toolkit. HTTP/2 Server Push, Service Worker based Cache-Digest and more.
 
 == Description ==
 
 This plugin provides a low cost and high performance international page cache solution based on [Amazon AWS CloudFront CDN](https://aws.amazon.com/cloudfront/).
 
-This is the first version of the plugin but the underlying technologies have been tested for over 5 years and some of our clients have achieved long term top 10 positions in Google in over 20 countries using a single server in Amsterdam.
+An advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs will be literally less than 1 dollar per month. Amazon provides free SSL certificates and there are no hidden costs.
 
-A big advantage of using CloudFront as a page cache for international SEO is that Amazon provides dedicated IP's for geographic regions. This means that a website will physically load from a location near the visitor. For a visitor from Sweden the website may be physically loaded from a server and IP in Stockholm.
-
-An other advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs will litterally be less than 1 dollar per month. Amazon provides free SSL certificates and there are no hidden costs.
+An other advantage is that CloudFront supports root domains when using [Amazon AWS Route53 DNS service](https://aws.amazon.com/route53/), making it possible to use CloudFront's CDN for https://yourdomain.com/
 
 Amazon AWS CloudFront is among the [fastest](https://encrypted.google.com/search?q=cloudfront+vs) CDN providers available with the greatest global network. This makes it a perfect option for any website that wants to reach an international audience or that simply wants a fast and secure page cache for a low cost VPS.
 
-## Solution for emerging markets
-
-Internet connectivity, speed and reliability are a major issue in some regions of the world affecting hundreds of millions of people. Regions such as Asia, India and Indonesia may also have many innovators and small business startups who produce or sell products that could be very attractive to other regions of the world, but they may lack financial resources to reach customers beyond their local market.
-
-The CloudFront page cache solution makes it possible to solve slow and unreliable internet issues for just $0.05 USD in total costs per month for a small blog. This plugin enables to use a 5 USD VPS for a heavy WordPress + WooCommerce installation while being capable of handling thousands of visitors per day (with a fast page speed and good results in Google) for just $0.50+ USD per month in AWS costs. The solution also enables a website to grow from 100 visitors per day to 100.000 visitors per day without a problem (besides costs). For a small business website, the total costs will be about $0.05 to $0.10 USD per month while international website speed + Google rankings are of high value.
-
-### Demo website
-
-An example is our demo website [www.e-scooter.co](https://www.e-scooter.co/) which is hosted on a cheap VPS in Switzerland. The website was created in July 2017 and it already has #1 positions in Google for premium search terms in the U.S., India and other regions. The total CloudFront bill for December 2017, including www.pagespeed.pro, www.fastestwebsite.co and some other websites was $0.74 USD.
-
-We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback to [info@pagespeed.pro](mailto:info@pagespeed.pro).
+We are interested to learn about your experiences and feedback when using this plugin. Please submit your feedback on the [Github community forum](https://github.com/o10n-x/wordpress-cloudfront-page-cache/issues).
 
 == Installation ==
 
 ### WordPress plugin installation
 
-1. Upload the `cloudfront-page-cache/` directory to the `/wp-content/plugins/` directory.
+1. Upload the `cf-page-cache/` directory to the `/wp-content/plugins/` directory.
 2. Activate the plugin through the 'Plugins' menu in WordPress.
 3. Navigate to the plugin setup page or follow the below instructions.
 
 ### CloudFront Page Cache installation
 
 The setup of CloudFront, despite the many options, is very simple. The most important settings for this plugin to work are the correct configuration of the origin host, the CNAME (public host), creating a SSL certificate (optional) and setting the `X-CF-PAGE-CACHE` header. The other settings are mostly for optimization purposes and we will provide some advise for achieving the best settings for your website.
+
+**For professional installation support, you can [submit your question](https://forums.aws.amazon.com/forum.jspa?forumID=46) on the CloudFront Support Forum.**
 
 To get started, login to [AWS CloudFront Console](https://console.aws.amazon.com/cloudfront/home), click the button **Create Distribution** and choose the *Web* Distribution type.
 
@@ -70,9 +60,27 @@ CloudFront will setup the distribution in a few minutes.
 
 == Changelog ==
 
+= 1.0.3 =
+Conversion of plugin to Page Cache Module for Performance Optimization Collection. See [https://github.com/o10n-x/](https://github.com/o10n-x/)
+
 = 1.0.2 =
 * Added functionality to set CloudFront cache age or expire date (HTTP headers).
 * Added default CloudFront cache age setting.
 
 = 1.0 =
 * The first version.
+
+
+== Changelog ==
+
+= 0.0.3 =
+
+Core update (see changelog.txt)
+
+= 0.0.1 =
+
+Beta release. Please provide feedback on [Github forum](https://github.com/o10n-x/wordpress-http2-optimization/issues).
+
+== Upgrade Notice ==
+
+None.

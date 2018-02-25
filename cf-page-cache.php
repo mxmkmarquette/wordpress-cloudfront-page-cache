@@ -1,79 +1,65 @@
 <?php
+namespace O10n;
+
 /**
  * CloudFront Page Cache CDN
  *
- * Low cost and high performance page cache for international SEO based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
+ * Low cost and high performance page cache based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's.
  *
- * @link              https://pagespeed.pro/
- * @since             1.0
- * @package           optimization
+ * @link              https://github.com/o10n-x/
+ * @package           o10n
  *
  * @wordpress-plugin
  * Plugin Name:       CloudFront Page Cache CDN
- * Description:       Low cost and high performance page cache for international SEO based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's for local SEO advantage.
- * Version:           1.0.2
- * Author:            PageSpeed.pro
- * Author URI:        https://pagespeed.pro/
- * Text Domain:       cloudfront-page-cache
+ * Description:       Low cost and high performance page cache based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's.
+ * Version:           1.0.3
+ * Author:            Optimization.Team
+ * Author URI:        https://optimization.team/
+ * Text Domain:       o10n
  * Domain Path:       /languages
  */
 
-if (!defined('ABSPATH')) {
-    exit;
+if (! defined('WPINC')) {
+    die;
 }
-
-define('CF_FPC_VERSION', '1.0.2');
-define('CF_FPC_URI', plugin_dir_url(__FILE__));
-define('CF_FPC_PATH', plugin_dir_path(__FILE__));
-define('CF_FPC_PLUGIN', plugin_basename(__FILE__));
-define('CF_FPC_SELF', __FILE__);
 
 // abort loading during upgrades
 if (defined('WP_INSTALLING') && WP_INSTALLING) {
     return;
 }
 
-// require PHP 5.3+
-if (version_compare(PHP_VERSION, '5.3', '<')) {
-    add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>".__('The CloudFront Page Cache plugin requires PHP 5.3 to function properly. Please upgrade PHP or deactivate this plugin.', 'cloudfront-page-cache') ."</p></div>';"));
+// settings
+$module_version = '1.0.3';
+$minimum_core_version = '0.0.6';
+$plugin_path = dirname(__FILE__);
 
-    return;
-} else {
-    try {
-
-        // load the core plugin class
-        require CF_FPC_PATH . 'controllers/core.class.php';
-        
-        // load CloudFront page cache controller
-        CloudFrontPageCache\Core::load();
-
-        // catch plugin exceptions
-    } catch (CloudFrontPageCache\Exception $err) {
-
-        // plugin failed to load
-        if (is_admin()) {
-            add_action('admin_notices', create_function('', "echo '<div class=\"error\"><h1>".__('CloudFront Page Cache plugin failed to load', 'cloudfront-page-cache') ."</h1><p>".$err->getMessage()."</p></div>';"), (PHP_INT_MAX * -1));
-        }
-
-        // write error to log
-        error_log('CloudFront Page Cache: failed to load on ' . parse_url($_SERVER['REQUEST_URI'] . ' | Error: '.$err->getMessage(), PHP_URL_PATH));
-
-        return;
-
-        // catch other exceptions (from dependencies, libraries etc.)
-    } catch (\Exception $err) {
-
-        // add admin notice
-        if (is_admin()) {
-            add_action('admin_notices', create_function('', "echo '<div class=\"error\"><h1>".__('CloudFront Page Cache experienced a problem when loading a dependency.', 'cloudfront-page-cache') ."</h1><p>".$err->getMessage()."</p></div>';"), (PHP_INT_MAX * -1));
-        }
-        
-        // write error to log
-        error_log('CloudFront Page Cache: failed to load dependency on ' . parse_url($_SERVER['REQUEST_URI'] . ' | Error: '.$err->getMessage(), PHP_URL_PATH));
-
-        return;
-    }
-    
-    // load public functions in global scope
-    require CF_FPC_PATH . 'includes/global.inc.php';
+// load the optimization module loader
+if (!class_exists('\O10n\Module')) {
+    require $plugin_path . '/core/controllers/module.php';
 }
+
+// load module
+new Module(
+    'cloudfront',
+    'CloudFront Page Cache',
+    $module_version,
+    $minimum_core_version,
+    array(
+        'core' => array(
+            'cloudfront'
+        ),
+        'admin' => array(
+            'AdminCloudfront',
+            'AdminCloudfrontinvalidation'
+        ),
+        'admin_global' => array(
+            'AdminGlobalcloudfront'
+        )
+    ),
+    false,
+    array(),
+    __FILE__
+);
+
+// load public functions in global scope
+require $plugin_path . '/includes/global.inc.php';

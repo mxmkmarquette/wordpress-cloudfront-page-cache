@@ -1,1 +1,1 @@
-<?php // CloudFront Page Cache
+<?php // WPO module

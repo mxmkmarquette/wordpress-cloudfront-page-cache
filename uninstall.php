@@ -1,22 +1,29 @@
 <?php
+namespace O10n;
 
 /**
  * Fired when the plugin is uninstalled.
  *
- * @link       https://pagespeed.pro/
- *
- * @package    cloudfront-page-cache
+ * @link       https://github.com/o10n-x/
+ * @package    optimization
  */
 
 if (! defined('WP_UNINSTALL_PLUGIN')) {
     exit;
 }
 
-/**
- * Remove settings
- */
-delete_option('cf-page-cache');
-delete_option('cf-page-cache-version');
-delete_option('cf-page-cache-invalidation-count');
-delete_option('cf-page-cache-invalidations-inprogress');
-delete_option('cf-page-cache-last-invalidation');
+$plugin_path = dirname(__FILE__);
+
+// load uninstall controller
+if (!class_exists('\O10n\Uninstall')) {
+    require $plugin_path . '/core/controllers/uninstall.php';
+}
+
+// start uninstaller
+$uninstaller = new Uninstall('cloudfront');
+
+// delete settings
+$uninstaller->delete_settings('cloudfront');
+
+// delete cache tables
+$uninstaller->delete_tables();
