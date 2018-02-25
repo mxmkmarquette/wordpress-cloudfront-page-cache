@@ -1,15 +1,15 @@
-=== HTTP/2 Optimization ===
+=== CloudFront Page Cache CDN ===
 Contributors: o10n
 Donate link: https://github.com/o10n-x/
-Tags: http2, spdy, server push, push, service worker, cache digest, pwa
+Tags: cache, cloudfront, aws, amazon, page cache, site cache, cloud, seo, international, performance, speed, page speed, pagespeed, fpc, full 
 Requires at least: 4.0
 Requires PHP: 5.4
 Tested up to: 4.9.4
-Stable tag: 0.0.3
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Advanced HTTP/2 optimization toolkit. HTTP/2 Server Push, Service Worker based Cache-Digest and more.
+Low cost and high performance page cache based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's.
 
 == Description ==
 
@@ -61,7 +61,7 @@ CloudFront will setup the distribution in a few minutes.
 == Changelog ==
 
 = 1.0.3 =
-Conversion of plugin to Page Cache Module for Performance Optimization Collection. See [https://github.com/o10n-x/](https://github.com/o10n-x/)
+Conversion of plugin to Page Cache Module. See [https://github.com/o10n-x/](https://github.com/o10n-x/) for optimization plugins.
 
 = 1.0.2 =
 * Added functionality to set CloudFront cache age or expire date (HTTP headers).
