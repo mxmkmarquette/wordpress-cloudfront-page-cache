@@ -36,14 +36,14 @@ If you are unfamiliar with configuring the DNS server you can send a request to 
  
 #### Root domain as public domain (https://your-domain.com/)
 
-CloudFront supports the use of a root domain but only when using an `ALIAS` DNS record in <a href="https://aws.amazon.com/route53/?<?php print $this->aws_tracking; ?>" target="_blank" rel="noopener">Amazon AWS Route 53</a> (cloud geo DNS), an international DNS service. Amazon provides an easy option to select the CloudFront distribution as the alias from the Route 53 settings for your domain. 
+CloudFront supports the use of a root domain but only when using an `ALIAS` DNS record in [Amazon AWS Route 53](https://aws.amazon.com/route53/) (cloud geo DNS), an international DNS service. Amazon provides an easy option to select the CloudFront distribution as the alias from the Route 53 settings for your domain. 
 
 ![Route 53 config for CloudFront](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/route-53-alias.png)
 
 If you are currently not using Route 53 and would like to use a root domain as the public host name then it is required to move your existing DNS to Route 53. To move the DNS, you can simply copy your existing DNS entries and enter the Route 53 nameservers at your domain registrar.
 
-
 ## How to test if it is working?
+
 CloudFront adds HTTP headers with the cache status. To test if the cache is working you can open the browser console (F12 in most browsers) and open the Network tab.
 
 ![CloudFront HTTP cache headers](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/cf-http-headers-chrome.png)
@@ -107,7 +107,7 @@ To redirect www. to non-www., simply change the `$http_host` condition to match 
     
 ### Handling POST requests
 
-CloudFront does not support HTTP POST requests. If you want to use a submission form that needs to post data to the server then it is required to use a script on the origin host that is not redirected to the public (www. or non-www.) host.
+CloudFront supports HTTP POST requests however it may be that you prefer to bypass CloudFront for post requests. If you want to use a submission form that needs to post data directly to the server then it is required to use a script on the origin host that is not redirected to the public (www. or non-www.) host.
 
 This plugin provides support for processing POST requests on the origin host by automatically rewriting `admin-ajax.php`. You can control the URLs that are rewritten to the origin host using the filter `cfpc-origin-hosts-filter`.
 
@@ -129,5 +129,6 @@ This plugin does not rewrite URLs in the HTML. It only modifies the result of na
 
 CloudFront enables to cache dynamic content based on HTTP headers and cookies in the advanced settings of the CloudFront Console. For help setting up dynamic content caching, post your question to the [AWS CloudFront support forum](https://forums.aws.amazon.com/forum.jspa?forumID=46).
 
-#### CloudFront Cache Settings
+### CloudFront Cache Settings
+
 ![docs](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/cookie-cache.png)
