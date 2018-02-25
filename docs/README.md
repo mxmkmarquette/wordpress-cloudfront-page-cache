@@ -20,11 +20,11 @@ The other settings are optional but we advise to install a SSL certificate, forc
 
 CloudFront will setup the distribution in a few minutes.
 
-#### Plugin Setup
+### Plugin Setup
 
 Enable the plugin by configuring the plugin settings.
 
-#### DNS Setup
+### DNS Setup
 
 To connect the CloudFront public cache frontend to your website, you will need to add a CNAME record in your DNS server for the public host that you configured as CNAME in the CloudFront distribution. The CNAME should point to the CloudFront Domain Name of your distribution. In our case it is *d1hyhu0m6pwrmw.cloudfront.net*.
 
@@ -39,7 +39,7 @@ If you are unfamiliar with configuring the DNS server you can send a request to 
 <h3>Root domain as public domain (https://your-domain.com/)</h3>
 CloudFront supports the use of root domains but only when using an `ALIAS` DNS record in <a href="https://aws.amazon.com/route53/?<?php print $this->aws_tracking; ?>" target="_blank" rel="noopener">Amazon AWS Route 53</a> (cloud geo DNS), an international DNS service. Amazon provides an easy option to select the CloudFront distribution as the alias from the Route 53 settings for your domain. 
 
-<img src="<?php print plugins_url('admin/images/route-53-alias.png', 'cf-page-cache/cf-page-cache.php'); ?>">
+![Route 53 config for CloudFront](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/route-53-alias.png)
 
 If you are currently not using Route 53 and would like to use a root domain as the public host name then it is required to move your existing DNS to Route 53. To move the DNS, you can simply copy your existing DNS entries and enter the Route 53 nameservers at your domain registrar.
 
@@ -47,8 +47,7 @@ If you are currently not using Route 53 and would like to use a root domain as t
 ## How to test if it is working?
 CloudFront adds HTTP headers with the cache status. To test if the cache is working you can open the browser console (F12 in most browsers) and open the Network tab.
 
-<img src="<?php print plugins_url('admin/images/cf-http-headers-chrome.png', 'cf-page-cache/cf-page-cache.php'); ?>">
-
+![CloudFront HTTP cache headers](https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/cf-http-headers-chrome.png)
 
 ## Webserver Setup
 
