@@ -1,9 +1,6 @@
-<p align="right"><img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/admin/images/amazon-cloudfront.png" height="125"> <img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/admin/images/aws-cloudfront-100.png">
- 
+# CloudFront Page Cache Documentation
 
-## CloudFront Page Cache Documentation
-
-#### CloudFront Setup
+### CloudFront Setup
 
 The setup of CloudFront, despite the many options, is very simple. The most important settings for this plugin to work are the correct configuration of the origin host, the CNAME (public host), creating a SSL certificate (optional) and setting the `X-CF-PAGE-CACHE` header. The other settings are mostly for optimization purposes and we will provide some advise for achieving the best settings for your website.
 

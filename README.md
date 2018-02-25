@@ -4,7 +4,7 @@
 
 This plugin provides a low cost and high performance international page cache solution based on [Amazon AWS CloudFront CDN](https://aws.amazon.com/cloudfront/).
 
-* <a href="https://wordpress.org/plugins/cf-page-cache/#installation">Documentation</a>
+* <a href="https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs">Documentation</a>
 * <a href="https://wordpress.org/plugins/cf-page-cache/">WordPress Profile</a>
 
 An advantage of Amazon AWS CloudFront as a page cache is that they provide the lowest costs. For an average business website, the total costs will be literally less than 1 dollar per month. Amazon provides free SSL certificates and there are no hidden costs.
