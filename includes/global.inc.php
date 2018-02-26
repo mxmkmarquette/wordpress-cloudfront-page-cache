@@ -24,5 +24,5 @@ function set_expire($timestamp)
 // set CloudFront no cache
 function nocache()
 {
-    \O10n\Core::get('cloudfront')->set_age(-1);
+    \O10n\Core::get('cloudfront')->set_max_age(-1);
 }
