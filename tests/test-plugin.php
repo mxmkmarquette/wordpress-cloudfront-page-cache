@@ -31,7 +31,7 @@ class PluginTest extends WP_UnitTestCase
         // get sent headers
         $headers = headers_list();
 
-        $this->assertTrue(in_array($headers, 'Cache-Control: public, must-revalidate, max-age=7200'));
+        $this->assertTrue(in_array('Cache-Control: public, must-revalidate, max-age=7200', $headers));
     }
 
     // Check that set_max_age sets correct expire header
@@ -46,6 +46,6 @@ class PluginTest extends WP_UnitTestCase
         // get sent headers
         $headers = headers_list();
 
-        $this->assertTrue(in_array($headers, 'Expires: '.gmdate('D, d M Y H:i:s \G\M\T', (time() + 7200))));
+        $this->assertTrue(in_array('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', (time() + 7200))), $headers);
     }
 }
