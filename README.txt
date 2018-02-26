@@ -49,6 +49,8 @@ https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs
 
 = 1.0.4 =
 * Improved admin menu.
+* Added PHPUnit test.
+* Added Travis CI build test.
 
 = 1.0.3 =
 * Conversion of plugin to Page Cache Module. See [https://github.com/o10n-x/](https://github.com/o10n-x/) for optimization plugins.
