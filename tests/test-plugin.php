@@ -46,6 +46,6 @@ class PluginTest extends WP_UnitTestCase
         // get sent headers
         $headers = headers_list();
 
-        $this->assertTrue(in_array('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', (time() + 7200))), $headers);
+        $this->assertTrue(in_array('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', (time() + 7200)), $headers));
     }
 }
