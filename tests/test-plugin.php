@@ -15,12 +15,12 @@ class PluginTest extends WP_UnitTestCase
         parent::setUp();
 
         // enable cloudfront
-        update_option('o10n', array(
+        O10n\Core::get('options')->save(array(
             'cloudfront.enabled' => true,
             'cloudfront.host' => 'cloudfront-test.com',
             'cloudfront.origin' => 'cloudfront-test.com',
             'cloudfront.domain' => 'cloudfront.net'
-        ), true);
+        ));
     }
 
     // Check that public methods are available
