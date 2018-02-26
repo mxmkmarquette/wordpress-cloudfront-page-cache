@@ -49,7 +49,7 @@ class AdminViewCloudfront extends AdminViewBase
     {
         // WPO plugin
         if (defined('O10N_WPO_VERSION')) {
-            $this->default_tab_view = 'optimization';
+            $this->default_tab_view = 'settings';
         }
 
         // set view etc

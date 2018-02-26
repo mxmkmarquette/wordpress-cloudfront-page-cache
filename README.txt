@@ -33,22 +33,9 @@ We are interested to learn about your experiences and feedback when using this p
 
 ### CloudFront Page Cache installation
 
-The setup of CloudFront, despite the many options, is very simple. The most important settings for this plugin to work are the correct configuration of the origin host, the CNAME (public host), creating a SSL certificate (optional) and setting the `X-CF-PAGE-CACHE` header. The other settings are mostly for optimization purposes and we will provide some advise for achieving the best settings for your website.
+Documentation is available on Github:
 
-**For professional installation support, you can [submit your question](https://forums.aws.amazon.com/forum.jspa?forumID=46) on the CloudFront Support Forum.**
-
-To get started, login to [AWS CloudFront Console](https://console.aws.amazon.com/cloudfront/home), click the button **Create Distribution** and choose the *Web* Distribution type.
-
-1. Enter the origin host name in the **Origin Domain Name** field. By default, this plugin differentiates between origin and public hosts by the presence of `www.` so if your public host is *www.your-domain.com* then you would enter *yourdomain.com* as your origin host. If you want to use your root domain then the www. version will be your origin host. You can customize this behaviour in the plugin settings.</p>
-2. In the **Origin Custom Headers** field, add the header `X-CF-PAGE-CACHE` with the value `1`.
-3. In the **Alternate Domain Names (CNAMEs)** field, enter the public host (non-www. or www. version of the origin host).
-4. Set **Cache Based on Selected Request Headers** to `Whitelist` and add the HTTP headers `Host` and `Origin` to the list. This will prevent direct access to the CloudFront domain.
-
-The other settings are optional but we advise to install a SSL certificate, force SSL using *Viewer Policy: Redirect HTTP to HTTPS*, forward query strings using *Forward all, cache based on whitelist* (useful for debugging and cache busting) and *Compress Objects Automatically* (enabled). You should also look at the option *Origin Protocol Policy*. If your origin forces SSL then the setting should be *HTTPS only*.
-
-**Done**
-
-CloudFront will setup the distribution in a few minutes.
+https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs
 
 == Screenshots ==
 
@@ -60,8 +47,11 @@ CloudFront will setup the distribution in a few minutes.
 
 == Changelog ==
 
+= 1.0.4 =
+* Improved admin menu.
+
 = 1.0.3 =
-Conversion of plugin to Page Cache Module. See [https://github.com/o10n-x/](https://github.com/o10n-x/) for optimization plugins.
+* Conversion of plugin to Page Cache Module. See [https://github.com/o10n-x/](https://github.com/o10n-x/) for optimization plugins.
 
 = 1.0.2 =
 * Added functionality to set CloudFront cache age or expire date (HTTP headers).
@@ -70,16 +60,7 @@ Conversion of plugin to Page Cache Module. See [https://github.com/o10n-x/](http
 = 1.0 =
 * The first version.
 
-
-== Changelog ==
-
-= 0.0.3 =
-
-Core update (see changelog.txt)
-
-= 0.0.1 =
-
-Beta release. Please provide feedback on [Github forum](https://github.com/o10n-x/wordpress-http2-optimization/issues).
+Please provide feedback on the [Github forum](https://github.com/o10n-x/wordpress-cloudfront-page-cache/issues).
 
 == Upgrade Notice ==
 

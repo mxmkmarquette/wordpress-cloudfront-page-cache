@@ -122,7 +122,7 @@ class AdminGlobalcloudfront extends ModuleAdminController implements Module_Admi
                 $admin_bar->add_node(array(
                     'parent' => 'o10n-cloudfront-second',
                     'id' => 'o10n-cloudfront-clear-page',
-                    'title' => __('Invalidate Page', 'o10n'),
+                    'title' => '<span class="dashicons dashicons-trash o10n-menu-icon"></span> ' . __('Invalidate Page', 'o10n'),
                     'href' => add_query_arg(array( 'page' => 'o10n-cloudfront', 'tab' => 'invalidation', 'purge' => 'page', 'path' => $path, 'return' => $currenturl, 't' => time() ), admin_url($admin_base)),
                     'meta' => array( 'title' => __('Clear CloudFront cache for current page.', 'o10n'), 'onclick' => 'return o10n_cloudfront_confirm_purge(this);' )
                 ));
@@ -131,7 +131,7 @@ class AdminGlobalcloudfront extends ModuleAdminController implements Module_Admi
             $admin_bar->add_node(array(
                 'parent' => 'o10n-cloudfront-second',
                 'id' => 'o10n-cloudfront-clear',
-                'title' => __('Invalidate All /*', 'o10n'),
+                'title' => '<span class="dashicons dashicons-trash o10n-menu-icon"></span> ' . __('Invalidate All /*', 'o10n'),
                 'href' => add_query_arg(array( 'page' => 'o10n-cloudfront', 'tab' => 'invalidation', 'purge' => 'cf', 'return' => (is_admin()) ? false : $currenturl, 't' => time() ), admin_url($admin_base)),
                 'meta' => array( 'title' => __('Clear CloudFront cache for all pages.', 'o10n'), 'onclick' => 'return o10n_cloudfront_confirm_purge(this);' )
             ));
@@ -139,7 +139,7 @@ class AdminGlobalcloudfront extends ModuleAdminController implements Module_Admi
             $admin_bar->add_node(array(
                 'parent' => 'o10n-cloudfront-second',
                 'id' => 'o10n-cloudfront-clear-plugins',
-                'title' => __('Purge Plugin Caches', 'o10n'),
+                'title' => '<span class="dashicons dashicons-trash o10n-menu-icon"></span> ' . __('Purge Plugin Caches', 'o10n'),
                 'href' => add_query_arg(array( 'page' => 'o10n-cloudfront', 'tab' => 'invalidation', 'purge' => 'plugins', 'return' => (is_admin()) ? false : $currenturl, 't' => time() ), admin_url($admin_base)),
                 'meta' => array( 'title' => __('Clear the cache of page cache related plugins such as Autoptimize, WP Super Cache and others.', 'o10n'), 'onclick' => 'return o10n_cloudfront_confirm_purge(this);' )
             ));
@@ -147,16 +147,34 @@ class AdminGlobalcloudfront extends ModuleAdminController implements Module_Admi
             $admin_bar->add_node(array(
                 'parent' => 'o10n-cloudfront-second',
                 'id' => 'o10n-cloudfront-clear-all',
-                'title' => __('Invalidate All + Plugin Caches', 'o10n'),
+                'title' => '<span class="dashicons dashicons-trash o10n-menu-icon"></span> ' . __('Invalidate All + Plugin Caches', 'o10n'),
                 'href' => add_query_arg(array( 'page' => 'o10n-cloudfront', 'tab' => 'invalidation', 'purge' => 'all', 'return' => (is_admin()) ? false : $currenturl, 't' => time() ), admin_url($admin_base)),
                 'meta' => array( 'title' => __('Invalidate all pages on CloudFront (/*) + clear the cache of plugins such as Autoptimize, WP Super Cache and others.', 'o10n'), 'onclick' => 'return o10n_cloudfront_confirm_purge(this);' )
             ));
         }
 
+        // support
+        $admin_bar->add_node(array(
+            'parent' => 'o10n-cloudfront',
+            'id' => 'o10n-cloudfront-support',
+            'title' => '<span class="dashicons dashicons-phone o10n-menu-icon"></span> ' . __('AWS CloudFront Support', 'o10n'),
+            'href' => 'https://forums.aws.amazon.com/forum.jspa?forumID=46',
+            'meta' => array( 'title' => __('AWS CloudFront Support', 'o10n'), 'target' => '_blank' )
+        ));
+
+        // console
+        $admin_bar->add_node(array(
+            'parent' => 'o10n-cloudfront',
+            'id' => 'o10n-cloudfront-console',
+            'title' => '<span class="dashicons dashicons-admin-generic o10n-menu-icon"></span> ' . __('AWS CloudFront Console', 'o10n'),
+            'href' => 'https://console.aws.amazon.com/cloudfront/home',
+            'meta' => array( 'title' => __('AWS CloudFront Console', 'o10n'), 'target' => '_blank' )
+        ));
+
         $admin_bar->add_node(array(
             'parent' => 'o10n-cloudfront',
             'id' => 'o10n-cloudfront-speed-tests',
-            'title' => __('Speed Tests', 'o10n'),
+            'title' => '<span class="dashicons dashicons-dashboard o10n-menu-icon"></span> ' . __('Speed Tests', 'o10n'),
             'href' => false,
             'meta' => array( 'title' => __('Speed Tests', 'o10n') )
         ));
