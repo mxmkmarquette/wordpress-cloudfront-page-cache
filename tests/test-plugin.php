@@ -9,6 +9,20 @@ class PluginTest extends WP_UnitTestCase
         $this->assertTrue(is_plugin_active(PLUGIN_PATH));
     }
 
+    // setu ptest
+    public function setUp()
+    {
+        parent::setUp();
+
+        // enable cloudfront
+        update_option('o10n', array(
+            'cloudfront.enabled' => true,
+            'cloudfront.host' => 'cloudfront-test.com',
+            'cloudfront.origin' => 'cloudfront-test.com',
+            'cloudfront.domain' => 'cloudfront.net'
+        ), true);
+    }
+
     // Check that public methods are available
     public function test_public_methods()
     {
