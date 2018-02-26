@@ -9,20 +9,6 @@ class PluginTest extends WP_UnitTestCase
         $this->assertTrue(is_plugin_active(PLUGIN_PATH));
     }
 
-    // setu ptest
-    public function setUp()
-    {
-        parent::setUp();
-
-        // enable cloudfront
-        O10n\Core::get('options')->save(array(
-            'cloudfront.enabled' => true,
-            'cloudfront.host' => 'cloudfront-test.com',
-            'cloudfront.origin' => 'cloudfront-test.com',
-            'cloudfront.domain' => 'cloudfront.net'
-        ));
-    }
-
     // Check that public methods are available
     public function test_public_methods()
     {
@@ -38,6 +24,14 @@ class PluginTest extends WP_UnitTestCase
     {
         // navigate to front page
         $this->go_to('/');
+        
+        // enable cloudfront
+        O10n\Core::get('options')->save(array(
+            'cloudfront.enabled' => true,
+            'cloudfront.host' => 'cloudfront-test.com',
+            'cloudfront.origin' => 'cloudfront-test.com',
+            'cloudfront.domain' => 'cloudfront.net'
+        ));
 
         // max age = 2 hours
         O10n\CloudFront\set_max_age(7200);
@@ -58,6 +52,14 @@ class PluginTest extends WP_UnitTestCase
         // navigate to front page
         $this->go_to('/');
         
+        // enable cloudfront
+        O10n\Core::get('options')->save(array(
+            'cloudfront.enabled' => true,
+            'cloudfront.host' => 'cloudfront-test.com',
+            'cloudfront.origin' => 'cloudfront-test.com',
+            'cloudfront.domain' => 'cloudfront.net'
+        ));
+        
         // max age = 2 hours
         O10n\CloudFront\set_max_age(7200);
 
@@ -76,6 +78,14 @@ class PluginTest extends WP_UnitTestCase
     {
         // navigate to front page
         $this->go_to('/');
+        
+        // enable cloudfront
+        O10n\Core::get('options')->save(array(
+            'cloudfront.enabled' => true,
+            'cloudfront.host' => 'cloudfront-test.com',
+            'cloudfront.origin' => 'cloudfront-test.com',
+            'cloudfront.domain' => 'cloudfront.net'
+        ));
         
         // expire date to verify
         $age = 10800;
@@ -99,6 +109,14 @@ class PluginTest extends WP_UnitTestCase
         // navigate to front page
         $this->go_to('/');
         
+        // enable cloudfront
+        O10n\Core::get('options')->save(array(
+            'cloudfront.enabled' => true,
+            'cloudfront.host' => 'cloudfront-test.com',
+            'cloudfront.origin' => 'cloudfront-test.com',
+            'cloudfront.domain' => 'cloudfront.net'
+        ));
+        
         // expire date to verify
         $age = 10800;
         $date = date('r', (time() + $age));
@@ -120,6 +138,14 @@ class PluginTest extends WP_UnitTestCase
     {
         // navigate to front page
         $this->go_to('/');
+        
+        // enable cloudfront
+        O10n\Core::get('options')->save(array(
+            'cloudfront.enabled' => true,
+            'cloudfront.host' => 'cloudfront-test.com',
+            'cloudfront.origin' => 'cloudfront-test.com',
+            'cloudfront.domain' => 'cloudfront.net'
+        ));
         
         // expire in 3 hours
         O10n\CloudFront\nocache();
