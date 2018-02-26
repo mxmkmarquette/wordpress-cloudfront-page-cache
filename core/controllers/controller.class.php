@@ -174,20 +174,20 @@ abstract class Controller
      *
      * @param string $controller_name Property name of controller.
      */
-    public function &__get($controller_name)
+    public function __get($controller_name)
     {
         if ($this->bind && in_array($controller_name, $this->bind)) {
             $controller_classname = 'O10n\\' . ucfirst($controller_name);
-            if (isset(self::$instances[$controller_classname])) {
-                return self::$instances[$controller_classname];
+            if (isset($this->instances[$controller_classname])) {
+                return $this->instances[$controller_classname];
             }
         }
 
-        if (!isset(self::$instances[0])) {
-            self::$instances[0] = false;
+        if (!isset($this->instances[0])) {
+            $this->instances[0] = false;
         }
 
-        return self::$instances[0];
+        return $this->instances[0];
     }
 }
 
