@@ -56,9 +56,7 @@ abstract class Controller
             $this->bind = $bind;
             foreach ($bind as $controller_name) {
                 $controller_classname = 'O10n\\' . ucfirst($controller_name);
-                if (isset(self::$instances[$controller_classname])) {
-                    $this->$controller_name = & self::$instances[$controller_classname];
-                } else {
+                if (!isset(self::$instances[$controller_classname])) {
                     $this->bind_after_setup[$controller_classname] = $controller_name;
                 }
             }
