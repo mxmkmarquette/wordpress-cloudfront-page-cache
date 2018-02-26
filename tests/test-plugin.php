@@ -22,6 +22,28 @@ class PluginTest extends WP_UnitTestCase
     // Check that set_max_age sets correct cache control header
     public function test_max_age()
     {
+        // navigate to front page
+        $this->go_to($url);
+
+        // max age = 2 hours
+        O10n\CloudFront\set_max_age(7200);
+    
+        // activate send_headers hook
+        do_action('send_headers');
+
+        // get sent headers
+        $headers = headers_list();
+        print_r($headers);
+
+        $this->assertTrue(in_array('Cache-Control: public, must-revalidate, max-age=7200', $headers));
+    }
+
+    // Check that set_max_age sets correct expire header
+    public function test_max_age_expire()
+    {
+        // navigate to front page
+        $this->go_to($url);
+        
         // max age = 2 hours
         O10n\CloudFront\set_max_age(7200);
 
@@ -31,22 +53,6 @@ class PluginTest extends WP_UnitTestCase
         // get sent headers
         $headers = headers_list();
         print_r($headers);
-        exit;
-
-        $this->assertTrue(in_array('Cache-Control: public, must-revalidate, max-age=7200', $headers));
-    }
-
-    // Check that set_max_age sets correct expire header
-    public function test_max_age_expire()
-    {
-        // max age = 2 hours
-        O10n\CloudFront\set_max_age(7200);
-
-        // activate send_headers hook
-        do_action('send_headers');
-
-        // get sent headers
-        $headers = headers_list();
 
         $this->assertTrue(in_array('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', (time() + 7200)), $headers));
     }
@@ -54,6 +60,9 @@ class PluginTest extends WP_UnitTestCase
     // Check that set_expire sets correct expire header
     public function test_expire()
     {
+        // navigate to front page
+        $this->go_to($url);
+        
         // expire date to verify
         $age = 10800;
         $date = date('r', (time() + $age));
@@ -73,6 +82,9 @@ class PluginTest extends WP_UnitTestCase
     // Check that set_expire sets correct cache control header
     public function test_expire_max_age()
     {
+        // navigate to front page
+        $this->go_to($url);
+        
         // expire date to verify
         $age = 10800;
         $date = date('r', (time() + $age));
@@ -92,6 +104,9 @@ class PluginTest extends WP_UnitTestCase
     // Check that nocache sets correct nocache
     public function test_nocache()
     {
+        // navigate to front page
+        $this->go_to($url);
+        
         // expire in 3 hours
         O10n\CloudFront\nocache();
 
@@ -100,6 +115,7 @@ class PluginTest extends WP_UnitTestCase
 
         // get sent headers
         $headers = headers_list();
+        print_r($headers);
 
         $this->assertTrue(
             in_array('Cache-Control: no-store, no-cache, must-revalidate, max-age=0', $headers)
