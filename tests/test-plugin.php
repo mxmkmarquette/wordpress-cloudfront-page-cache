@@ -25,8 +25,8 @@ class PluginTest extends WP_UnitTestCase
         // max age = 2 hours
         O10n\CloudFront\set_max_age(7200);
 
-        // navigate
-        $this->go_to('/');
+        // activate send_headers hook
+        do_action('send_headers');
 
         // get sent headers
         $headers = headers_list();
@@ -40,12 +40,48 @@ class PluginTest extends WP_UnitTestCase
         // max age = 2 hours
         O10n\CloudFront\set_max_age(7200);
 
-        // navigate
-        $this->go_to('/');
+        // activate send_headers hook
+        do_action('send_headers');
+
+        // get sent headers
+        $headers = headers_list();
+    }
+
+    // Check that set_max_age sets correct cache control header
+    public function test_expire()
+    {
+        // expire date to verify
+        $age = 10800;
+        $date = date('r', (time() + $age));
+
+        // max age = 2 hours
+        O10n\CloudFront\set_expire(strtotime($date));
+
+        // activate send_headers hook
+        do_action('send_headers');
 
         // get sent headers
         $headers = headers_list();
 
-        $this->assertTrue(in_array('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', (time() + 7200)), $headers));
+        $this->assertTrue(in_array('Expires: '.gmdate('D, d M Y H:i:s \G\M\T', (strtotime($date))), $headers));
+    }
+
+    // Check that set_max_age sets correct expire header
+    public function test_expire_max_age()
+    {
+        // expire date to verify
+        $age = 10800;
+        $date = date('r', (time() + $age));
+        
+        // max age = 2 hours
+        O10n\CloudFront\set_expire(strtotime($date));
+
+        // activate send_headers hook
+        do_action('send_headers');
+
+        // get sent headers
+        $headers = headers_list();
+
+        $this->assertTrue(in_array('Cache-Control: public, must-revalidate, max-age=' . $age, $headers));
     }
 }
