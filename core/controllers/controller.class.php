@@ -25,8 +25,6 @@ abstract class Controller
 
     protected $wpdb; // WordPress database
 
-    private $bind_after_setup; // controllers to bind after setup
-
     protected $first_priority; // first priority integer
     protected $content_path; // wp-content/ directory path
 
@@ -114,16 +112,16 @@ abstract class Controller
     {
         if ($this->bind && in_array($controller_name, $this->bind)) {
             $controller_classname = 'O10n\\' . ucfirst($controller_name);
-            if (isset($this->instances[$controller_classname])) {
-                return $this->instances[$controller_classname];
+            if (isset(self::$instances[$controller_classname])) {
+                return self::$instances[$controller_classname];
             }
         }
 
-        if (!isset($this->instances[0])) {
-            $this->instances[0] = false;
+        if (!isset(self::$instances[0])) {
+            self::$instances[0] = false;
         }
 
-        return $this->instances[0];
+        return self::$instances[0];
     }
 }
 
