@@ -23,7 +23,7 @@ class PluginTest extends WP_UnitTestCase
     public function test_max_age()
     {
         // navigate to front page
-        $this->go_to($url);
+        $this->go_to('/');
 
         // max age = 2 hours
         O10n\CloudFront\set_max_age(7200);
@@ -42,7 +42,7 @@ class PluginTest extends WP_UnitTestCase
     public function test_max_age_expire()
     {
         // navigate to front page
-        $this->go_to($url);
+        $this->go_to('/');
         
         // max age = 2 hours
         O10n\CloudFront\set_max_age(7200);
@@ -61,7 +61,7 @@ class PluginTest extends WP_UnitTestCase
     public function test_expire()
     {
         // navigate to front page
-        $this->go_to($url);
+        $this->go_to('/');
         
         // expire date to verify
         $age = 10800;
@@ -83,7 +83,7 @@ class PluginTest extends WP_UnitTestCase
     public function test_expire_max_age()
     {
         // navigate to front page
-        $this->go_to($url);
+        $this->go_to('/');
         
         // expire date to verify
         $age = 10800;
@@ -105,7 +105,7 @@ class PluginTest extends WP_UnitTestCase
     public function test_nocache()
     {
         // navigate to front page
-        $this->go_to($url);
+        $this->go_to('/');
         
         // expire in 3 hours
         O10n\CloudFront\nocache();
