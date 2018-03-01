@@ -134,7 +134,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
     it "CloudFront sends 7200 second cache headers on frontend" do
       
       # Should obtain cookies and be able to visit /wp-admin
-      expect(response.headers["Cache-Control"]).to eq "public, must-revalidate, max-age=7200"
+      expect(page.driver.browser.last_response["Cache-Control"]).to eq "public, must-revalidate, max-age=7200"
 
     end
 
