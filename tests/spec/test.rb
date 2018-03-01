@@ -97,15 +97,13 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       click_button 'wp-submit'
       # Should obtain cookies and be able to visit /wp-admin
       expect(page).to have_id "wpadminbar"
-
-      save_screenshot "screenshots/login.png"
     end
   end
 
   describe "cloudfront-settings" do
 
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
+      page.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
       save_screenshot "screenshots/settings.png"
     end
 
@@ -134,7 +132,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
   describe "cloudfront-cache-headers" do
     before do 
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      page.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
     it "CloudFront sends 7200 second cache headers on frontend" do
