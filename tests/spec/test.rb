@@ -53,6 +53,8 @@ uri = URI(target_url)
 username = ENV['WP_TEST_USER']
 password = ENV['WP_TEST_USER_PASS']
 
+session = Capybara::Session.new(:webkit, "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/")
+
 puts "testing #{target_url}..."
 ### Begin tests ###
 describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :type => :request, :js => true do 
@@ -62,7 +64,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "frontpage" do
 
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
     it "Healthy status code 200" do
@@ -80,9 +82,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "admin-panel" do
 
     before do
-      Capybara.using_session("o10n-test") do
-        visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
-      end
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
     end
 
     it "There's a login form" do
@@ -103,9 +103,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "cloudfront-settings" do
 
     before do
-      Capybara.using_session("o10n-test") do
-        visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
-      end
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
       save_screenshot "screenshots/settings.png"
     end
 
@@ -134,8 +132,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
   describe "cloudfront-cache-headers" do
     before do
-      #Our sites always have https on
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
     it "CloudFront sends 7200 second cache headers on frontend" do
