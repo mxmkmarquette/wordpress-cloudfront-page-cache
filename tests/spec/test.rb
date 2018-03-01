@@ -99,7 +99,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
     before do
       #Our sites always have https on
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/options-general.php?page=o10n-cloudfront&tab=settings"
+      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
     end
 
     it "There's a CloudFront settings form" do
