@@ -53,7 +53,7 @@ uri = URI(target_url)
 username = ENV['WP_TEST_USER']
 password = ENV['WP_TEST_USER_PASS']
 
-session = Capybara::Session.new(:webkit, "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/")
+session = Capybara::Session.new(:poltergeist)
 
 puts "testing #{target_url}..."
 ### Begin tests ###
