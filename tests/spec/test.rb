@@ -9,6 +9,8 @@ require 'capybara/poltergeist'
 require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
+require 'capybara-screenshot/rspec'
+
 require 'uri' # parse the url from wp-cli
 
 # Load our default RSPEC MATCHERS
@@ -100,6 +102,8 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
     before do
       #Our sites always have https on
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
+
+      save_screenshot "settings.png"
     end
 
     it "There's a CloudFront settings form" do
