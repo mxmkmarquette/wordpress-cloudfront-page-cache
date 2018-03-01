@@ -131,7 +131,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   end
 
   describe "cloudfront-cache-headers" do
-    before do
+    before do 
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
