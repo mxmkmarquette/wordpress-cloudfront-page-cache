@@ -68,11 +68,11 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
     end
 
     it "Healthy status code 200" do
-      expect(page).to have_status_of [200]
+      expect(session).to have_status_of [200]
     end
 
     it "Page includes stylesheets" do
-      expect(page).to have_css
+      expect(session).to have_css
     end
 
     ### Add customised business critical frontend tests here #####
@@ -86,7 +86,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
     end
 
     it "There's a login form" do
-      expect(page).to have_id "wp-submit"
+      expect(session).to have_id "wp-submit"
     end
 
     it "Logged in to WordPress Dashboard" do
@@ -96,7 +96,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       end
       click_button 'wp-submit'
       # Should obtain cookies and be able to visit /wp-admin
-      expect(page).to have_id "wpadminbar"
+      expect(session).to have_id "wpadminbar"
     end
   end
 
@@ -108,7 +108,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
     end
 
     it "There's a CloudFront settings form" do
-      expect(page).to have_selector("input[name='o10n[cloudfront.enabled]']")
+      expect(session).to have_selector("input[name='o10n[cloudfront.enabled]']")
     end
 
     it "Saved CloudFront settings" do
@@ -125,7 +125,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       click_button 'is_submit'
 
       # Should obtain cookies and be able to visit /wp-admin
-      expect(page).to have_content("Settings saved.")
+      expect(session).to have_content("Settings saved.")
     end
 
   end
