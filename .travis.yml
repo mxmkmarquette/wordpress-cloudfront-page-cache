@@ -23,6 +23,7 @@ matrix:
 
 addons:
   artifacts:
+    s3_bucket: pagespeedpro
     s3_region: "eu-west-2"
     working_dir: screenshots
 
