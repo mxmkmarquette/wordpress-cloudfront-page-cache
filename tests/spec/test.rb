@@ -10,7 +10,7 @@ require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
-require "rack_session_access/capybara"
+require 'rack_session_access/capybara'
 
  #
 require 'uri' # parse the url from wp-cli
@@ -54,7 +54,7 @@ uri = URI(target_url)
 username = ENV['WP_TEST_USER']
 password = ENV['WP_TEST_USER_PASS']
 
-//session = Capybara::Session.new(:poltergeist)
+#session = Capybara::Session.new(:poltergeist)
 
 puts "testing #{target_url}..."
 ### Begin tests ###
