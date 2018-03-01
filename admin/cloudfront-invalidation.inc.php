@@ -48,6 +48,7 @@ if (!empty($last_invalidation)) {
 <p>Cache invalidation is not entirely free. Amazon provides a monthly free budget of <?php print $view->AdminCloudfrontinvalidation->budget(); ?> invalidations. Additional path invalidations are charged at $<?php print number_format_i18n($view->AdminCloudfrontinvalidation->overusage_price(), 3); ?> USD per invalidation (<a href="https://aws.amazon.com/cloudfront/pricing/?<?php print $view->aws_tracking; ?>" target="_blank" rel="noopener">view pricing details</a>).</p>
 <p>To prevent invalidation usage when assets are regularly updated, it is advised to use a <a href="https://encrypted.google.com/search?q=cache+busting+hash" target="_blank" rel="noopener">cache busting hash</a> strategy. This would enable unlimited free cache busting usage of CloudFront.</p>
 
+<p class="info_yellow suboption"><strong><span class="dashicons dashicons-lightbulb"></span></strong> To prevent invalidation costs during testing it is possible to use a Windows, Mac or Linux hosts file. <a href="https://encrypted.google.com/search?q=configure+hosts+file+windows+mac" target="_blank" rel="noopener">Search Google</a> for instructions.</p>
 <?php
 
 // print form header

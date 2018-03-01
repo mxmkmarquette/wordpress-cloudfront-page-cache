@@ -47,6 +47,9 @@ https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs
 
 == Changelog ==
 
+= 1.0.5 =
+Core update (see changelog.txt)
+
 = 1.0.4 =
 * Improved admin menu.
 * Added PHPUnit test.

@@ -155,7 +155,7 @@ if (!is_admin()) {
 			<div class="info_white">
 				<strong>Warning:</strong> CloudFront provides a free invalidation budget of 1000 invalidations per month. Additional cache invalidations are charged at $0.005 USD per path requested for invalidation. See the <a href="https://aws.amazon.com/cloudfront/pricing/?<?php print $view->aws_tracking; ?>" target="_blank" rel="noopener">pricing documentation</a> for more information. To clear all cached pages with a single path you can use the wildcard path <code>/*</code>.
 			</div>
-			<p class="info_yellow suboption"><strong><span class="dashicons dashicons-lightbulb"></span></strong> To prevent invalidation costs during testing it is possible to use a Windows, Mac or Linux hosts file. <a href="https://encrypted.google.com/search?q=configure+hosts+file+windows+mac" target="_blank" rel="noopener">Search Google</a> for instructions.</p></div>
+			<p class="info_yellow suboption"><strong><span class="dashicons dashicons-lightbulb"></span></strong> To prevent invalidation costs during testing it is possible to use a Windows, Mac or Linux hosts file. <a href="https://encrypted.google.com/search?q=configure+hosts+file+windows+mac" target="_blank" rel="noopener">Search Google</a> for instructions.</p>
 		</td>
 	</tr>
 </table>
