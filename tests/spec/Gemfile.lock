@@ -61,3 +61,4 @@ DEPENDENCIES
   poltergeist
   rspec (= 3.1.0)
   rspec-retry
+  rack_session_access
