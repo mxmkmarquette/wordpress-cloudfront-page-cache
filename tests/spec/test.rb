@@ -114,7 +114,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
     end
 
     it "Saved CloudFront settings" do
-      within(".json-form") do
+      within(".json-form") do 
 
         # enable plugin
         find("input[name='o10n[cloudfront.enabled]']").click
