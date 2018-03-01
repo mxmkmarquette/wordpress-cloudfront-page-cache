@@ -53,7 +53,7 @@ uri = URI(target_url)
 username = ENV['WP_TEST_USER']
 password = ENV['WP_TEST_USER_PASS']
 
-#session = Capybara::Session.new(:poltergeist)
+session = Capybara::Session.new(:poltergeist)
 
 puts "testing #{target_url}..."
 ### Begin tests ###
@@ -64,15 +64,15 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "frontpage" do
 
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
     it "Healthy status code 200" do
-      expect(page).to have_status_of [200]
+      expect(session).to have_status_of [200]
     end
 
     it "Page includes stylesheets" do
-      expect(page).to have_css
+      expect(session).to have_css
     end
 
     ### Add customised business critical frontend tests here #####
@@ -82,11 +82,11 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "admin-panel" do
 
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
     end
 
     it "There's a login form" do
-      expect(page).to have_id "wp-submit"
+      expect(session).to have_id "wp-submit"
     end
 
     it "Logged in to WordPress Dashboard" do
@@ -96,43 +96,43 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       end
       click_button 'wp-submit'
       # Should obtain cookies and be able to visit /wp-admin
-      expect(page).to have_id "wpadminbar"
+      expect(session).to have_id "wpadminbar"
     end
   end
 
   describe "cloudfront-settings" do
 
     before do
-      page.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
       save_screenshot "screenshots/settings.png"
     end
 
     it "There's a CloudFront settings form" do
-      expect(page).to have_selector("input[name='o10n[cloudfront.enabled]']")
+      expect(session).to have_selector("input[name='o10n[cloudfront.enabled]']")
     end
 
     it "Saved CloudFront settings" do
-      within(".json-form") do 
+      session.within(".json-form") do 
 
         # enable plugin
-        find("input[name='o10n[cloudfront.enabled]']").click
+        session.find("input[name='o10n[cloudfront.enabled]']").click
 
-        fill_in "input[name='o10n[cloudfront.host]']", with: "localhost"
-        fill_in "input[name='o10n[cloudfront.origin]']", with: "origin.localhost"
-        fill_in "input[name='o10n[cloudfront.domain]']", with: "xxx.cloudfront.net"
-        fill_in "input[name='o10n[cloudfront.max_age]']", with: "7200"
+        session.fill_in "input[name='o10n[cloudfront.host]']", with: "localhost"
+        session.fill_in "input[name='o10n[cloudfront.origin]']", with: "origin.localhost"
+        session.fill_in "input[name='o10n[cloudfront.domain]']", with: "xxx.cloudfront.net"
+        session.fill_in "input[name='o10n[cloudfront.max_age]']", with: "7200"
       end
-      click_button 'is_submit'
+      session.click_button 'is_submit'
 
       # Should obtain cookies and be able to visit /wp-admin
-      expect(page).to have_content("Settings saved.")
+      session.expect(session).to have_content("Settings saved.")
     end
 
   end
 
   describe "cloudfront-cache-headers" do
     before do 
-      page.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
     it "CloudFront sends 7200 second cache headers on frontend" do
