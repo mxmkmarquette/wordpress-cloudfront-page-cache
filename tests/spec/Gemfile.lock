@@ -12,8 +12,6 @@ GEM
     capybara-screenshot (1.0.13)
       capybara (>= 1.0, < 3)
       launchy
-    capybara-screenshot-s3 (0.0.1)
-      aws-sdk-core (1.8.2)
     cliver (0.3.2)
     diff-lcs (1.2.5)
     launchy (2.4.3)

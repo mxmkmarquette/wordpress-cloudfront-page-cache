@@ -5,4 +5,3 @@ gem 'rspec-retry'
 gem 'poltergeist'
 gem 'capybara'
 gem 'capybara-screenshot', :group => :test
-gem 'capybara-screenshot-s3', group: :test, require: false

@@ -10,7 +10,6 @@ require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
-require 'capybara-screenshot-s3'
 
  #
 require 'uri' # parse the url from wp-cli
@@ -46,21 +45,6 @@ Capybara.register_driver :poltergeist do |app|
    )
 end
 
-Capybara::Screenshot::S3.configure do |config|
-  config.access_key_id = "AKIAJDIXBNPUIXPGJF2Q"
-  config.secret_access_key = "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"
-
-  # bucket name - required. this can be a string or a Proc
-  config.bucket = "pagespeedpro"
-
-  # optionally, specify as folder in which to store the screenshots
-  # can be a string or a Proc
-  config.folder = ->{
-    if build_number = ENV["BUILD_NUMBER"]
-      "builds/#{build_number}"
-    end
-  }
-end
 
 target_url = ENV['WP_TEST_URL']
 
@@ -121,7 +105,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       #Our sites always have https on
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
 
-      save_screenshot "settings.png"
+      save_screenshot "screenshots/settings.png"
     end
 
     it "There's a CloudFront settings form" do

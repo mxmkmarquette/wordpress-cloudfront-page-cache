@@ -21,6 +21,11 @@ matrix:
   allow_failures:
     - php: nightly
 
+addons:
+  artifacts:
+    s3_region: "eu-west-2"
+    working_dir: screenshots
+
 before_script:
   # Install composer packages before trying to activate themes or plugins
   # - composer install
