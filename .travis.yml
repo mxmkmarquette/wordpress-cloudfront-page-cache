@@ -23,8 +23,8 @@ matrix:
 
 addons:
   artifacts:
-    s3_bucket: pagespeedpro
-    s3_region: eu-west-2
+    s3_bucket: o10n
+    s3_region: "us-west-1"
     working_dir: screenshots
 
 before_script:
