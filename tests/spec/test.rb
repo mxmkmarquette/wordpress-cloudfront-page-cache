@@ -65,6 +65,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
     before do
       session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      save_screenshot "screenshots/b.png"
     end
 
     it "Healthy status code 200" do
@@ -83,6 +84,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
     before do
       session.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
+      save_screenshot "screenshots/x.png"
     end
 
     it "There's a login form" do
@@ -138,7 +140,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
     it "CloudFront sends 7200 second cache headers on frontend" do
       
       # Should obtain cookies and be able to visit /wp-admin
-      expect(page.driver.browser.response["Cache-Control"]).to eq "public, must-revalidate, max-age=7200"
+      expect(session.driver.browser.response["Cache-Control"]).to eq "public, must-revalidate, max-age=7200"
 
     end
 
