@@ -103,7 +103,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
     before do
       #Our sites always have https on
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
+      page.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
 
       save_screenshot "screenshots/settings.png"
     end
