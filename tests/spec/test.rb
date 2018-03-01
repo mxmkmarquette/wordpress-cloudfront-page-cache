@@ -62,11 +62,10 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
   subject { page }
 
-  page.set_rack_session(test: "o10n")
-
   describe "frontpage" do
 
     before do
+      page.set_rack_session(test: "o10n")
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
@@ -85,6 +84,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "admin-panel" do
 
     before do
+      page.set_rack_session(test: "o10n")
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
     end
 
@@ -106,6 +106,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "cloudfront-settings" do
 
     before do
+      page.set_rack_session(test: "o10n")
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
       save_screenshot "screenshots/settings.png"
     end
@@ -135,6 +136,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
 
   describe "cloudfront-cache-headers" do
     before do
+      page.set_rack_session(test: "o10n")
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
     end
 
