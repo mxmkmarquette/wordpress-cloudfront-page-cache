@@ -5,3 +5,4 @@ gem 'rspec-retry'
 gem 'poltergeist'
 gem 'capybara'
 gem 'capybara-screenshot', :group => :test
+gem 'rack_session_access'
