@@ -80,8 +80,9 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "admin-panel" do
 
     before do
-      #Our sites always have https on
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
+      Capybara.using_session("o10n-test") do
+        visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
+      end
     end
 
     it "There's a login form" do
@@ -102,9 +103,9 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "cloudfront-settings" do
 
     before do
-      #Our sites always have https on
-      page.visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
-
+      Capybara.using_session("o10n-test") do
+        visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
+      end
       save_screenshot "screenshots/settings.png"
     end
 
