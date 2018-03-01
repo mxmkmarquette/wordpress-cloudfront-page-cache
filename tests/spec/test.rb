@@ -97,6 +97,8 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       click_button 'wp-submit'
       # Should obtain cookies and be able to visit /wp-admin
       expect(page).to have_id "wpadminbar"
+
+      save_screenshot "screenshots/login.png"
     end
   end
 
