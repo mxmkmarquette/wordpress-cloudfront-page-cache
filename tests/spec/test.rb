@@ -93,6 +93,9 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       # Should obtain cookies and be able to visit /wp-admin
       expect(page).to have_id "wpadminbar"
     end
+  end
+
+  describe "cloudfront-settings" do
 
     before do
       #Our sites always have https on
@@ -120,6 +123,9 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       expect(page).to have_content("Settings saved.")
     end
 
+  end
+
+  describe "cloudfront-cache-headers" do
     before do
       #Our sites always have https on
       visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
