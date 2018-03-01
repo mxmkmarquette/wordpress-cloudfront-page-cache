@@ -10,6 +10,8 @@ require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
+require 'capybara-screenshot-s3'
+
  #
 require 'uri' # parse the url from wp-cli
 
@@ -42,6 +44,22 @@ Capybara.register_driver :poltergeist do |app|
     ],
     window_size: [1920,1080] 
    )
+end
+
+Capybara::Screenshot::S3.configure do |config|
+  config.access_key_id = "AKIAJDIXBNPUIXPGJF2Q"
+  config.secret_access_key = "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"
+
+  # bucket name - required. this can be a string or a Proc
+  config.bucket = "pagespeedpro"
+
+  # optionally, specify as folder in which to store the screenshots
+  # can be a string or a Proc
+  config.folder = ->{
+    if build_number = ENV["BUILD_NUMBER"]
+      "builds/#{build_number}"
+    end
+  }
 end
 
 target_url = ENV['WP_TEST_URL']
