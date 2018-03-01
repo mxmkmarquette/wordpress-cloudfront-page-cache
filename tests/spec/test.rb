@@ -109,10 +109,10 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
         # enable plugin
         find("input[name='o10n[cloudfront.enabled]']").click
 
-        fill_in "input[name='o10n[cloudfront.host]']", :with => 'localhost'
-        fill_in "input[name='o10n[cloudfront.origin]']", :with => 'origin.localhost'
-        fill_in "input[name='o10n[cloudfront.domain]']", :with => 'xxx.cloudfront.net'
-        fill_in "input[name='o10n[cloudfront.max_age]']", :with '7200'
+        fill_in "input[name='o10n[cloudfront.host]']", with: "localhost"
+        fill_in "input[name='o10n[cloudfront.origin]']", with: "origin.localhost"
+        fill_in "input[name='o10n[cloudfront.domain]']", with: "xxx.cloudfront.net"
+        fill_in "input[name='o10n[cloudfront.max_age]']", with: "7200"
       end
       click_button 'is_submit'
 
