@@ -9,7 +9,7 @@ require 'capybara/poltergeist'
 require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
-require 'capybara-screenshot/rspec'
+#require 'capybara-screenshot/rspec'
 
  #
 require 'uri' # parse the url from wp-cli
@@ -53,18 +53,24 @@ uri = URI(target_url)
 username = ENV['WP_TEST_USER']
 password = ENV['WP_TEST_USER_PASS']
 
+cf_domain = ENV['CLOUDFRONT_DOMAIN']
+cf_dist = ENV['CLOUDFRONT_DIST']
+cf_access_key = ENV['CLOUDFRONT_ACCESS_KEY']
+cf_secret = ENV['CLOUDFRONT_SECRET']
+
 #session = Capybara::Session.new(:poltergeist)
+
 
 puts "testing #{target_url}..."
 ### Begin tests ###
-describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :type => :request, :js => true do 
+describe "wordpress: #{uri}/ - ", :type => :request, :js => true do 
 
   subject { page }
 
   describe "frontpage" do
 
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      visit "#{uri}/"
     end
 
     it "Healthy status code 200" do
@@ -80,7 +86,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "admin-panel" do
 
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-login.php"
+      visit "#{uri}/wp-login.php"
     end
 
     it "There's a login form" do
@@ -101,8 +107,7 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
   describe "cloudfront-settings" do
 
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
-      save_screenshot "screenshots/settings.png"
+      visit "#{uri}/wp-admin/options-general.php?page=o10n-cloudfront&tab=settings"
     end
 
     it "Logged in to WordPress Dashboard" do
@@ -114,33 +119,68 @@ describe "wordpress: #{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/ - ", :t
       
       expect(page).to have_selector("input[name='o10n[cloudfront.enabled]']")
     
-      within(".json-form") do 
+      within("#poststuff") do 
 
-        # enable plugin
-        find("input[name='o10n[cloudfront.enabled]']").click
+        # enable cloudfront page cache
+        find("input[name='o10n[cloudfront.enabled]']").set(true)
 
-        fill_in "input[name='o10n[cloudfront.host]']", with: "localhost"
-        fill_in "input[name='o10n[cloudfront.origin]']", with: "origin.localhost"
-        fill_in "input[name='o10n[cloudfront.domain]']", with: "xxx.cloudfront.net"
-        fill_in "input[name='o10n[cloudfront.max_age]']", with: "7200"
+        fill_in "o10n[cloudfront.host]", with: "www.e-scooter.co"
+        fill_in "o10n[cloudfront.origin]", with: "e-scooter.co"
+        fill_in "o10n[cloudfront.domain]", with: :with => cf_domain
+        fill_in "o10n[cloudfront.max_age]", with: "7200"
+
+        # enable cloudfront invalidation
+        find("input[name='o10n[cloudfront.invalidation.enabled]']").set(true)
+
+        fill_in "o10n[cloudfront.invalidation.distribution_id]",:with => cf_dist
+        fill_in "o10n[cloudfront.invalidation.api_key]", :with => cf_access_key
+        fill_in "o10n[cloudfront.invalidation.api_secret]", :with => cf_secret
+
       end
+      
       click_button 'is_submit'
 
-      # Should obtain cookies and be able to visit /wp-admin
       expect(page).to have_content("Settings saved.")
+
+      within("#poststuff") do 
+
+        # enable cloudfront page cache
+        find("input[name='o10n[cloudfront.invalidation.api_test]']").set(true)
+
+      end
+      
+      click_button 'is_submit'
+
+      expect(page).to have_content("AWS API connection verified.")
     end
 
   end
 
-  describe "cloudfront-cache-headers" do
+  describe "cloudfront-invalidation" do
+
     before do
-      visit "#{uri.scheme}://#{uri.host}:#{uri.port}#{uri.path}/"
+      visit "#{uri}/wp-admin/options-general.php?page=o10n-cloudfront&tab=invalidation"
     end
 
-    it "CloudFront sends 7200 second cache headers on frontend" do
+    it "Logged in to WordPress Dashboard" do
+      within("#loginform") do
+        fill_in 'log', :with => username
+        fill_in 'pwd', :with => password
+      end
+      click_button 'wp-submit'
       
-      # Should obtain cookies and be able to visit /wp-admin
-      expect(page.driver.browser.response["Cache-Control"]).to eq "public, must-revalidate, max-age=7200"
+      expect(page).to have_selector("textarea[name='o10n[invalidations]']")
+    
+      within("#poststuff") do 
+
+        # enable cloudfront page 
+        fill_in "o10n[invalidations]", with: "/xxx/"
+
+      end
+      
+      click_button 'is_submit'
+
+      expect(page).to have_content(/Invalidation request.*submitted/i)
 
     end
 
