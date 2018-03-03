@@ -201,6 +201,8 @@ describe "wordpress: #{uri}/ - ", :type => :request, :js => true do
       
       expect(page).to have_selector("#cloudfront_invalidate_container")
 
+      find("#cloudfront_invalidate_container").find(".action").click
+
       select "Purge All (CloudFront + plugins)", from: "o10n_cloudfront_purge"
 
       click_button 'publish'
