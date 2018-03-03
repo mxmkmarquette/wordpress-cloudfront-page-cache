@@ -9,7 +9,7 @@ require 'capybara/poltergeist'
 require 'rspec'
 require 'rspec/retry'
 require 'capybara/rspec'
-#require 'capybara-screenshot/rspec'
+require 'capybara-screenshot/rspec'
 
  #
 require 'uri' # parse the url from wp-cli
@@ -138,7 +138,7 @@ describe "wordpress: #{uri}/ - ", :type => :request, :js => true do
 
       end
       
-      click_button 'is_submit'
+      #click_button 'is_submit'
 
       expect(page).to have_content("Settings saved.")
 
