@@ -72,7 +72,7 @@ class Admin extends Controller implements Controller_Interface
     /**
      * Add admin error notice
      */
-    final public function add_notice($message, $category, $type = 'ERROR')
+    final public function add_notice($message, $category = 'admin', $type = 'ERROR')
     {
         // get notices
         $notices = $this->get_notices();
