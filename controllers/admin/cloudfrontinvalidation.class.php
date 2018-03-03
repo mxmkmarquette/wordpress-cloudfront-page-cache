@@ -64,7 +64,7 @@ class AdminCloudfrontinvalidation extends ModuleAdminController implements Modul
         $invalidations_in_progress = get_option('o10n_cloudfront_invalidations_in_progress', array());
         if (!empty($invalidations_in_progress)) {
             foreach ($invalidations_in_progress as $invalidation) {
-                $this->admin->add_notice('<span class="spinner" style="float:none;margin:0px;display:inline-block;visibility:visible;"></span> Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $invalidation['paths'])).'">'.esc_html($invalidation['id']).'</a> <code>processing</code>.', 'NOTICE');
+                $this->admin->add_notice('<span class="spinner" style="float:none;margin:0px;display:inline-block;visibility:visible;"></span> Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $invalidation['paths'])).'">'.esc_html($invalidation['id']).'</a> <code>processing</code>.', 'cloudfront', 'NOTICE');
 
                 if (!isset($invalidation['last-update'])) {
                     $invalidation['last-update'] = $invalidation['date'];
@@ -107,14 +107,14 @@ class AdminCloudfrontinvalidation extends ModuleAdminController implements Modul
 
                 $path = (isset($_GET['path'])) ? trim($_GET['path']) : '';
                 if ($path === '') {
-                    $this->admin->add_notice('Purge request contained no path for invalidation.');
+                    $this->admin->add_notice('Purge request contained no path for invalidation.', 'cloudfront');
 
                     return;
                 }
 
                 // verify path
                 if (substr($path, 0, 1) !== '/') {
-                    $this->admin->add_notice('Purge request contained invalid path.');
+                    $this->admin->add_notice('Purge request contained invalid path.', 'cloudfront');
 
                     return;
                 }
@@ -216,9 +216,9 @@ class AdminCloudfrontinvalidation extends ModuleAdminController implements Modul
                 // verify status
                 if ($invalidation_result['status'] !== 'InProgress') {
                     if ($invalidation_result['status'] === 'Completed') {
-                        $this->admin->add_notice('Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $invalidation['paths'])).'">'.esc_html($invalidation['id']).'</a> <code>completed</code>.', 'SUCCESS', array('persist' => 'expire', 'max-views' => 3, 'max-age' => 60));
+                        $this->admin->add_notice('Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $invalidation['paths'])).'">'.esc_html($invalidation['id']).'</a> <code>completed</code>.', 'cloudfront', 'SUCCESS', array('persist' => 'expire', 'max-views' => 3, 'max-age' => 60));
                     } else {
-                        $this->admin->add_notice('Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $invalidation['paths'])).'">'.esc_html($invalidation['id']).'</a> <code>'.$invalidation_result['status'].'</code>.', 'ERROR', array('persist' => 'expire', 'max-views' => 3, 'max-age' => 60));
+                        $this->admin->add_notice('Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $invalidation['paths'])).'">'.esc_html($invalidation['id']).'</a> <code>'.$invalidation_result['status'].'</code>.', 'cloudfront', 'ERROR', array('persist' => 'expire', 'max-views' => 3, 'max-age' => 60));
                     }
                 } else {
                     $invalidation['last-update'] = time();
@@ -447,6 +447,6 @@ class AdminCloudfrontinvalidation extends ModuleAdminController implements Modul
             }
         }
 
-        $this->admin->add_notice('Cache of page cache related plugins cleared.', 'SUCCESS', array('persist' => 'expire','max-views' => 1));
+        $this->admin->add_notice('Cache of page cache related plugins cleared.', 'cloudfront', 'SUCCESS', array('persist' => 'expire','max-views' => 1));
     }
 }

@@ -179,7 +179,7 @@ class AdminViewCloudfront extends AdminViewBase
                                 if (!$api_OK) {
                                     $forminput->error('cloudfront.invalidation.api_test', 'AWS API connection failed: unknown error');
                                 } else {
-                                    $this->admin->add_notice('AWS API connection verified.', false, 'SUCCESS');
+                                    $this->admin->add_notice('AWS API connection verified.', 'cloudfront', 'SUCCESS');
                                 }
                             }
                         }
@@ -196,7 +196,7 @@ class AdminViewCloudfront extends AdminViewBase
                 $invalidations = $forminput->get('invalidations');
 
                 if ($invalidations === '') {
-                    $this->admin->add_notice('You did not enter paths to invalidate.');
+                    $this->admin->add_notice('You did not enter paths to invalidate.', 'cloudfront');
                 } else {
                     $invalidations_raw = explode(PHP_EOL, $invalidations);
                     $invalidations = array();
@@ -209,7 +209,7 @@ class AdminViewCloudfront extends AdminViewBase
                     }
 
                     if (empty($invalidations)) {
-                        $this->admin->add_notice('You did not enter paths to invalidate.');
+                        $this->admin->add_notice('You did not enter paths to invalidate.', 'cloudfront');
                     } else {
 
                         // send invalidation request
@@ -220,7 +220,7 @@ class AdminViewCloudfront extends AdminViewBase
                         }
 
                         if ($result) {
-                            $this->admin->add_notice('Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('cloudfront.invalidation.distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $result['paths'])).'">'.esc_html($result['id']).'</a> submitted.');
+                            $this->admin->add_notice('Invalidation request <a href="https://console.aws.amazon.com/cloudfront/home#distribution-settings:'.esc_attr($this->options->get('cloudfront.invalidation.distribution_id')).'" target="_blank" rel="noopener" title="'.esc_attr(implode(PHP_EOL, $result['paths'])).'">'.esc_html($result['id']).'</a> submitted.', 'cloudfront');
                         }
                     }
                 }
