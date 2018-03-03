@@ -3,9 +3,9 @@ Contributors: o10n
 Donate link: https://github.com/o10n-x/
 Tags: cache, cloudfront, aws, amazon, page cache, site cache, cloud, seo, international, performance, speed, page speed, pagespeed, fpc, full 
 Requires at least: 4.0
-Requires PHP: 5.4
+Requires PHP: 5.5
 Tested up to: 4.9.4
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -46,6 +46,9 @@ https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs
 5. CloudFront Network (2017)
 
 == Changelog ==
+
+= 1.0.8 =
+* AWS SDK requires PHP5.5+. Minimum PHP version increased to 5.5.
 
 = 1.0.7 =
 * Added rspec unit tests and AWS API test.
