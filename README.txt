@@ -47,6 +47,9 @@ https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs
 
 == Changelog ==
 
+= 1.0.7 =
+* Added rspec unit tests and AWS API test.
+
 = 1.0.6 =
 Core update (see changelog.txt)
 
