@@ -185,6 +185,35 @@ describe "wordpress: #{uri}/ - ", :type => :request, :js => true do
     end
 
   end
+
+  describe "cloudfront-post-invalidation" do
+
+    before do
+      visit "#{uri}/wp-admin/post.php?post=1&action=edit"
+    end
+
+    it "Logged in to WordPress Dashboard" do
+      within("#loginform") do
+        fill_in 'log', :with => username
+        fill_in 'pwd', :with => password
+      end
+      click_button 'wp-submit'
+      
+      expect(page).to have_selector("#cloudfront_invalidate_container")
+
+      select "Purge All (CloudFront + plugins)", from: "o10n_cloudfront_purge"
+
+      click_button 'publish'
+
+      visit "#{uri}/wp-admin/options-general.php?page=o10n-cloudfront"
+
+      expect(page).to have_content(/Invalidation request.*processing/i)
+
+      expect(page).to have_content(/Cache of page cache related plugins cleared/i)
+
+    end
+
+  end
  
 end
 
