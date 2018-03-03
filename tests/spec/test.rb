@@ -126,7 +126,7 @@ describe "wordpress: #{uri}/ - ", :type => :request, :js => true do
 
         fill_in "o10n[cloudfront.host]", with: "www.e-scooter.co"
         fill_in "o10n[cloudfront.origin]", with: "e-scooter.co"
-        fill_in "o10n[cloudfront.domain]", with: :with => cf_domain
+        fill_in "o10n[cloudfront.domain]", :with => cf_domain
         fill_in "o10n[cloudfront.max_age]", with: "7200"
 
         # enable cloudfront invalidation
