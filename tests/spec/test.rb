@@ -216,6 +216,25 @@ describe "wordpress: #{uri}/ - ", :type => :request, :js => true do
     end
 
   end
+
+  describe "plugin-index-settings-link" do
+
+    before do
+      visit "#{uri}/wp-admin/plugins.php"
+    end
+
+    it "Logged in to WordPress Dashboard" do
+      within("#loginform") do
+        fill_in 'log', :with => username
+        fill_in 'pwd', :with => password
+      end
+      click_button 'wp-submit'
+   
+      expect(page).to have_content(/CloudFront Page Cache/i)
+
+    end
+
+  end
  
 end
 
