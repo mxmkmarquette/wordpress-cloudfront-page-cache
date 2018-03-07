@@ -137,7 +137,7 @@ class AdminCloudfront extends ModuleAdminController implements Module_Admin_Cont
     /**
      * Show row meta on the plugin screen.
      */
-    public static function plugin_row_meta($links, $file)
+    final public function plugin_row_meta($links, $file)
     {
         if ($file == $this->core->modules('cloudfront')->basename()) {
             $lgcode = strtolower(get_locale());
