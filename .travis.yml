@@ -26,6 +26,13 @@ addons:
     s3_region: "us-west-1"
     working_dir: screenshots
 
+notifications:
+  slack:
+    rooms:
+      - o10n-x:J4WK8cWmvrEyQGtajZ0XcXC2#testing
+    on_success: always
+    on_failure: always
+
 before_script:
   - git clone https://github.com/o10n-x/wordpress-test-template wp-tests
   - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION

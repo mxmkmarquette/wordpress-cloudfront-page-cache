@@ -9,6 +9,10 @@ namespace O10n\CloudFront;
  * @author     Optimization.Team <info@optimization.team>
  */
 
+if (function_exists('\O10n\CloudFront\set_max_age')) {
+    return;
+}
+
 // set CloudFront cache age for page
 function set_max_age($age)
 {
