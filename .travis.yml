@@ -34,7 +34,7 @@ notifications:
     on_failure: always
 
 before_script:
-  - git clone https://github.com/o10n-x/wordpress-test-template wp-tests
+  - git clone https://github.com/Seravo/wordpress-test-template wp-tests
   - bash wp-tests/bin/install-wp-tests.sh test root '' localhost $WP_VERSION
 
 script:
