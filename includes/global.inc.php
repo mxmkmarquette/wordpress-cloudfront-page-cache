@@ -9,7 +9,7 @@ namespace O10n\CloudFront;
  * @author     Optimization.Team <info@optimization.team>
  */
 
-if (function_exists('O10n\CloudFront\set_max_age')) {
+if (function_exists(__NAMESPACE__ . '\set_max_age')) {
     return;
 }
 
