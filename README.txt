@@ -5,7 +5,7 @@ Tags: cache, cloudfront, aws, amazon, page cache, site cache, cloud, seo, intern
 Requires at least: 4.0
 Requires PHP: 5.5
 Tested up to: 4.9.4
-Stable tag: 1.0.28
+Stable tag: 1.0.29
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,8 +47,8 @@ https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs
 
 == Changelog ==
 
-= 1.0.28 =
-Core update (see changelog.txt)
+= 1.0.29 =
+* Core update (see changelog.txt)
 
 = 1.0.25 =
 * Added: JSON profile editor for all optimization modules.
