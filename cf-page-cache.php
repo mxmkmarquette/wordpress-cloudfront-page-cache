@@ -15,6 +15,7 @@ namespace O10n;
  * Version:           1.0.34
  * Author:            Optimization.Team
  * Author URI:        https://optimization.team/
+ * GitHub Plugin URI: https://github.com/o10n-x/wordpress-cloudfront-page-cache
  * Text Domain:       o10n
  * Domain Path:       /languages
  */
