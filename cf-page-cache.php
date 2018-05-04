@@ -12,7 +12,7 @@ namespace O10n;
  * @wordpress-plugin
  * Plugin Name:       CloudFront Page Cache CDN
  * Description:       Low cost and high performance page cache based on Amazon's CloudFront CDN. CloudFront provides international fast website speed and dedicated geographic IP's.
- * Version:           1.0.36
+ * Version:           1.0.37
  * Author:            Optimization.Team
  * Author URI:        https://optimization.team/
  * GitHub Plugin URI: https://github.com/o10n-x/wordpress-cloudfront-page-cache
@@ -30,8 +30,8 @@ if (defined('WP_INSTALLING') && WP_INSTALLING) {
 }
 
 // settings
-$module_version = '1.0.36';
-$minimum_core_version = '0.0.16';
+$module_version = '1.0.37';
+$minimum_core_version = '0.0.44';
 $plugin_path = dirname(__FILE__);
 
 // require PHP 5.5+
