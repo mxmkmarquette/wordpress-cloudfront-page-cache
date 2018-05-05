@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/o10n-x/wordpress-cloudfront-page-cache.svg?branch=master)](https://travis-ci.org/o10n-x/wordpress-cloudfront-page-cache)
+[![Build Status](https://travis-ci.org/o10n-x/wordpress-cloudfront-page-cache.svg?branch=master)](https://travis-ci.org/o10n-x/wordpress-cloudfront-page-cache) ![Version](https://img.shields.io/github/release/o10n-x/wordpress-cloudfront-page-cache.svg)
 
 <p align="right"><img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/amazon-cloudfront.png" height="125"> <img src="https://github.com/o10n-x/wordpress-cloudfront-page-cache/blob/master/docs/images/aws-cloudfront-100.png"></p> 
 
