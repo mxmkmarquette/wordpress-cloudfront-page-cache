@@ -8,6 +8,7 @@ This plugin provides a low cost and high performance international page cache so
 
 * [Documentation](https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs)
 * [Description](https://github.com/o10n-x/wordpress-cloudfront-page-cache#description)
+* [Version history (Changelog)](https://github.com/o10n-x/wordpress-cloudfront-page-cache/releases)
 
 **This plugin is removed from WordPress.org. Read the story [here](https://github.com/o10n-x/wordpress-css-optimization/issues/4).**
 
