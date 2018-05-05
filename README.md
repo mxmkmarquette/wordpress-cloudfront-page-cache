@@ -6,8 +6,8 @@
 
 This plugin provides a low cost and high performance international page cache solution based on [Amazon AWS CloudFront CDN](https://aws.amazon.com/cloudfront/).
 
-* <a href="https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs">Documentation</a>
-* <a href="https://wordpress.org/plugins/cf-page-cache/">WordPress Profile</a>
+* [Documentation](https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs)
+* [Description](https://github.com/o10n-x/wordpress-cloudfront-page-cache#description)
 
 **This plugin is removed from WordPress.org. Read the story [here](https://github.com/o10n-x/wordpress-css-optimization/issues/4).**
 
