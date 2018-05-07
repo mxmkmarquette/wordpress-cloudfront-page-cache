@@ -47,7 +47,7 @@ https://github.com/o10n-x/wordpress-cloudfront-page-cache/tree/master/docs
 
 == Changelog ==
 
-= 1.0.38 =
+= 1.0.39 =
 * Core update (see changelog.txt)
 
 = 1.0.36 =
