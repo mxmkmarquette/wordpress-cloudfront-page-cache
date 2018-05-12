@@ -26,7 +26,7 @@ $module_version = $view->module->version();
 
 			<p class="about-text" style="min-height:inherit;">Thank you for using the <?php print $module_name; ?> plugin by <a href="https://github.com/o10n-x/" target="_blank" rel="noopener" style="color:black;text-decoration:none;">Optimization.Team</a></p>
 
-			<!--p class="about-text info_white" style="min-height:inherit;border-color:#0073aa;background:#f1faff;"><strong><span class="dashicons dashicons-welcome-comments" style="line-height: 32px;font-size: 34px;width: inherit;color:#0073aa;"></span></strong> The optimization plugins have been removed from WordPress.org. Read the story <a href="https://github.com/o10n-x/wordpress-css-optimization/issues/4" target="_blank">here</a>.</p-->
+			
 
 			<p class="about-text" style="min-height:inherit;">This plugin enables to use <a href="https://aws.amazon.com/cloudfront/" target="_blank">Amazon CloudFront CDN</a> as a international page cache for WordPress. </p>
 
